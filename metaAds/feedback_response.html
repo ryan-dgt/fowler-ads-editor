@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fowler Homes — Meta Ads Feedback Response</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --red: #da291c;
+    --black: #1a1a1a;
+    --grey: #7c7b7a;
+    --grey-light: #f5f5f5;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  .header {
+    background: var(--black);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .header img {
+    height: 60px;
+    margin-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .header p {
+    font-size: 13px;
+    color: var(--grey);
+    letter-spacing: 1px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 32px;
+  }
+
+  .intro {
+    border-left: 3px solid var(--red);
+    padding-left: 24px;
+    margin-bottom: 48px;
+  }
+
+  .intro p {
+    font-size: 15px;
+    color: #444;
+  }
+
+  .feedback-item {
+    margin-bottom: 56px;
+    page-break-inside: avoid;
+  }
+
+  .feedback-item .number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+
+  .feedback-item h2 {
+    display: inline;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+    vertical-align: middle;
+  }
+
+  .feedback-quote {
+    background: var(--grey-light);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    border-left: 3px solid var(--grey);
+  }
+
+  .feedback-quote strong {
+    font-style: normal;
+    color: var(--black);
+  }
+
+  .changes {
+    margin: 16px 0;
+  }
+
+  .changes h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .changes ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .changes ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .changes ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .tag.done {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  .tag.confirm {
+    background: #fff3e0;
+    color: #e65100;
+  }
+
+  .tag.pending {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+
+  .assets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  .assets-table th {
+    text-align: left;
+    padding: 10px 16px;
+    background: var(--black);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .assets-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+  }
+
+  .assets-table tr:nth-child(even) td {
+    background: var(--grey-light);
+  }
+
+  .divider {
+    width: 40px;
+    height: 3px;
+    background: var(--red);
+    margin: 56px 0;
+  }
+
+  .next-steps {
+    background: var(--grey-light);
+    border-radius: 8px;
+    padding: 32px;
+    margin-top: 48px;
+  }
+
+  .next-steps h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .next-steps ol {
+    padding-left: 20px;
+  }
+
+  .next-steps ol li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    color: var(--grey);
+    border-top: 1px solid #eee;
+    margin-top: 48px;
+  }
+
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .feedback-item { break-inside: avoid; page-break-inside: avoid; }
+    .header { padding: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="brandAssets/FH_Stacked/2. Fowler Homes Your Style of Living Stacked/a_Fowler_Homes_logo_reversed_2023.png" alt="Fowler Homes">
+  <h1>Meta Ads — Feedback Response</h1>
+  <p>Creative updates based on Ruth's feedback &bull; February 2026</p>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <p>All feedback has been actioned across the ad creatives. Below is a summary of what Ruth requested and what's changed in the concepts. Items needing confirmation are flagged.</p>
+  </div>
+
+  <!-- ============================================ -->
+
+  <div class="feedback-item">
+    <span class="number">1</span>
+    <h2>Reversed Stacked Logo</h2>
+    <span class="tag done">Done</span>
+
+    <div class="feedback-quote">
+      "Wouldn't mind seeing the 'reversed' stacked logo used in some concepts."
+      <br><strong>— Ruth</strong>
+    </div>
+
+    <div class="changes">
+      <h3>What Changed</h3>
+      <ul>
+        <li>Extracted the reversed stacked logo (white text, red roofline) from the brand assets zip</li>
+        <li>Swapped into <strong>4 concepts</strong> that use dark or red backgrounds:</li>
+      </ul>
+
+      <table class="assets-table">
+        <tr>
+          <th>Concept</th>
+          <th>Format</th>
+          <th>Background</th>
+          <th>Logo Size</th>
+        </tr>
+        <tr>
+          <td>Angle 1 — Packages (square)</td>
+          <td>1080 x 1080</td>
+          <td>Red</td>
+          <td>80px</td>
+        </tr>
+        <tr>
+          <td>Angle 1 — Packages (story)</td>
+          <td>1080 x 1920</td>
+          <td>Black</td>
+          <td>72px</td>
+        </tr>
+        <tr>
+          <td>Angle 2 — D&B Experts (portrait)</td>
+          <td>1080 x 1350</td>
+          <td>Black</td>
+          <td>52px</td>
+        </tr>
+        <tr>
+          <td>Angle 9 — Brand Heritage (story)</td>
+          <td>1080 x 1920</td>
+          <td>Red</td>
+          <td>72px</td>
+        </tr>
+      </table>
+
+      <ul>
+        <li>Remaining concepts keep the horizontal logo for variety across the set</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+
+  <div class="feedback-item">
+    <span class="number">2</span>
+    <h2>Angle 1 — Fixed Price &rarr; Packages</h2>
+    <span class="tag done">Done</span>
+
+    <div class="feedback-quote">
+      "With the Fixed Price creative, is there a way to mould this message into our Packages for sale? As this is the real value for buyers/investors. Design & Build clients will make variations and go over budget..."
+      <br><strong>— Ruth</strong>
+    </div>
+
+    <div class="changes">
+      <h3>What Changed</h3>
+      <ul>
+        <li>Renamed from "Fixed Price Means Fixed Price" to <strong>"Your Package. Your Price. Sorted."</strong></li>
+        <li>Square ad now leads with "House & Land / Turnkey Packages" as the kicker</li>
+        <li>Messaging repositioned: <em>"Land, home, fittings — everything included in one fixed price. No variations. No surprises. Just your keys."</em></li>
+        <li>Story format focuses on Turnkey & House & Land being move-in ready with one fixed price</li>
+        <li>Removed the "83% of builds go over budget" stat — replaced with package-first messaging</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+
+  <div class="feedback-item">
+    <span class="number">3</span>
+    <h2>Angle 2 — Design & Build Experts</h2>
+    <span class="tag done">Done</span>
+    <span class="tag pending">Icons Pending</span>
+
+    <div class="feedback-quote">
+      "I like this, but it's not a massive proposition statement for us. I'd probably like to roll out more 'Design & Build experts' message. This is the foundation of FH, it also ties to the knock down & rebuild."
+      <br><strong>— Ruth</strong>
+    </div>
+
+    <div class="changes">
+      <h3>What Changed</h3>
+      <ul>
+        <li>Renamed from "Love the Street. Hate the House." to <strong>"Design & Build Experts Since 1984"</strong></li>
+        <li><strong>Square ad (1080x1080):</strong> "Your vision. Built by experts." — lists Custom D&B, Plans Collection, and Knock Down & Rebuild as core services</li>
+        <li><strong>New portrait ad (1080x1350):</strong> "We don't just build homes. We design them <span style="color: var(--red);">with you.</span>" — deeper D&B expertise copy with KD&R in the bottom bar</li>
+        <li>Uses stacked reversed logo in the portrait card</li>
+      </ul>
+      <h3>Still Needed</h3>
+      <ul>
+        <li>Ruth mentioned she'll provide icons for the Build With Us e-doc — these can be integrated into the D&B creative once received</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+
+  <div class="feedback-item">
+    <span class="number">4</span>
+    <h2>Plans Collection — 6 Real Plans</h2>
+    <span class="tag done">Done</span>
+    <span class="tag confirm">Confirm Specs</span>
+
+    <div class="feedback-quote">
+      "Another good way to see them in one visual is the Pinterest board. Happy to give files for any other floor plans."
+      <br><strong>— Ruth</strong>
+    </div>
+
+    <div class="changes">
+      <h3>What Changed</h3>
+      <ul>
+        <li>Replaced single placeholder carousel card with <strong>6 real plan cards</strong> using actual floor plan images from the brand assets</li>
+        <li>Arranged in 2 rows of 3, ordered by size (smallest to largest)</li>
+        <li>Pinterest board linked in the section notes for reference</li>
+      </ul>
+
+      <table class="assets-table">
+        <tr>
+          <th>Plan</th>
+          <th>Size</th>
+          <th>Beds</th>
+          <th>Baths</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>Murihiku</td>
+          <td>159m²</td>
+          <td>3</td>
+          <td>2</td>
+          <td>Compact living</td>
+        </tr>
+        <tr>
+          <td>Pisa</td>
+          <td>189m²</td>
+          <td>3</td>
+          <td>2</td>
+          <td>Family home</td>
+        </tr>
+        <tr>
+          <td>St Clair</td>
+          <td>203m²</td>
+          <td>4</td>
+          <td>2</td>
+          <td>Modern family</td>
+        </tr>
+        <tr>
+          <td>Te Ranga</td>
+          <td>211m²</td>
+          <td>4</td>
+          <td>2</td>
+          <td>Spacious family</td>
+        </tr>
+        <tr>
+          <td>Bellgrove</td>
+          <td>257m²</td>
+          <td>4+</td>
+          <td>2+</td>
+          <td>Dual Income / Home & Income</td>
+        </tr>
+        <tr>
+          <td>Anderson</td>
+          <td>307m²</td>
+          <td>4</td>
+          <td>3</td>
+          <td>Grand family, premium build</td>
+        </tr>
+      </table>
+
+      <h3>Please Confirm</h3>
+      <ul>
+        <li>Bed/bath counts are estimated from floor area — <strong>Ruth to confirm exact specs</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+
+  <div class="feedback-item">
+    <span class="number">5</span>
+    <h2>Angle 7 — Clear Turnkey vs H&L Labelling</h2>
+    <span class="tag done">Done</span>
+    <span class="tag confirm">Confirm Prices</span>
+
+    <div class="feedback-quote">
+      "Needs to have clear labelling if a Turnkey or House & Land Package (they are different things). Website has all the accurate info & prices."
+      <br><strong>— Ruth</strong>
+    </div>
+
+    <div class="changes">
+      <h3>What Changed</h3>
+      <ul>
+        <li>Expanded from 1 generic card to <strong>3 cards showing distinct package types</strong></li>
+        <li>Each card has a <strong>prominent package-type badge</strong> at the top-right of the image</li>
+        <li>Badge styling differentiates types: black badge = Turnkey, red badge = House & Land</li>
+        <li>Bottom badges reinforce key differences (e.g. "10% Deposit" for Turnkey vs "Progress Payments" for H&L)</li>
+      </ul>
+
+      <table class="assets-table">
+        <tr>
+          <th>Card</th>
+          <th>Package Type</th>
+          <th>Location</th>
+          <th>Badge Colour</th>
+        </tr>
+        <tr>
+          <td>Card 1</td>
+          <td>Turnkey House & Land</td>
+          <td>Shotover Rise, Queenstown</td>
+          <td>Black</td>
+        </tr>
+        <tr>
+          <td>Card 2</td>
+          <td>Turnkey Home & Income</td>
+          <td>Hanley's Farm, Queenstown</td>
+          <td>Black</td>
+        </tr>
+        <tr>
+          <td>Card 3</td>
+          <td>House & Land Package</td>
+          <td>Queens Road, New Plymouth</td>
+          <td>Red</td>
+        </tr>
+      </table>
+
+      <h3>Please Confirm</h3>
+      <ul>
+        <li><strong>Prices are placeholders</strong> — Ruth to confirm from fowlerhomes.co.nz</li>
+        <li>Render images are generic Fowler Homes photography — swap for specific listing photos from Google Drive once downloaded</li>
+        <li>Additional listings provided (Wooing Tree, Cambridge, Feilding, etc.) can be added as more carousel cards using the same template</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================ -->
+
+  <div class="feedback-item">
+    <h2 style="display: block;">Listings Provided — Ready to Build Out</h2>
+    <p style="margin-top: 8px; font-size: 14px; color: #555;">Ruth provided the following listings with Google Drive assets. These can each become an Angle 7 carousel card once images are downloaded and prices confirmed.</p>
+
+    <table class="assets-table" style="margin-top: 16px;">
+      <tr>
+        <th>Address</th>
+        <th>Package Type</th>
+        <th>Region</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>1 Centurion Court, Willow Pond</td>
+        <td>Turnkey House & Land</td>
+        <td>Queenstown</td>
+        <td><span class="tag pending">Ready</span></td>
+      </tr>
+      <tr>
+        <td>Lot 827 Dip Road, Hanley's Farm</td>
+        <td>Turnkey Home & Income</td>
+        <td>Queenstown</td>
+        <td><span class="tag done">In Concepts</span></td>
+      </tr>
+      <tr>
+        <td>Lots 915–920, Wooing Tree Estate</td>
+        <td>Turnkey Home & Income</td>
+        <td>Cromwell</td>
+        <td><span class="tag pending">Ready</span></td>
+      </tr>
+      <tr>
+        <td>Lot 214, Shotover Rise</td>
+        <td>Turnkey House & Land</td>
+        <td>Queenstown</td>
+        <td><span class="tag done">In Concepts</span></td>
+      </tr>
+      <tr>
+        <td>12a Hauhake Terrace, Kotare Park</td>
+        <td>Turnkey Home & Income</td>
+        <td>Cambridge</td>
+        <td><span class="tag pending">Ready</span></td>
+      </tr>
+      <tr>
+        <td>Queens Road, Glen Avon</td>
+        <td>House & Land</td>
+        <td>New Plymouth</td>
+        <td><span class="tag done">In Concepts</span></td>
+      </tr>
+      <tr>
+        <td>4 Ruru Place</td>
+        <td>House & Land</td>
+        <td>Feilding</td>
+        <td><span class="tag pending">Ready</span></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ============================================ -->
+
+  <div class="next-steps">
+    <h2>Next Steps</h2>
+    <ol>
+      <li><strong>Ruth to confirm</strong> bed/bath specs on the 6 plans (Murihiku, Pisa, St Clair, Te Ranga, Bellgrove, Anderson)</li>
+      <li><strong>Ruth to confirm</strong> prices for the H&L / Turnkey cards from fowlerhomes.co.nz</li>
+      <li><strong>Ruth to send</strong> Design & Build icons mentioned for the D&B expert creative</li>
+      <li><strong>Download listing photos</strong> from the Google Drive links provided to swap into Angle 7 cards</li>
+      <li><strong>Build out remaining H&L cards</strong> for Centurion Court, Wooing Tree, Cambridge, and Feilding listings</li>
+      <li>Review updated concepts at <a href="ad_creatives.html" style="color: var(--red);">ad_creatives.html</a></li>
+    </ol>
+  </div>
+
+</div>
+
+<div class="footer">
+  Fowler Homes &bull; Meta Ads Campaign &bull; Feedback Response &bull; February 2026
+</div>
+
+</body>
+</html>

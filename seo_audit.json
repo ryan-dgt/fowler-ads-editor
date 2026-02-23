@@ -1,0 +1,383 @@
+{
+  "audit_date": "2026-02-17",
+  "site": "https://buildwedge.com",
+  "total_pages": 31,
+  "summary": {
+    "missing_meta_descriptions": 1,
+    "duplicate_h1s": 0,
+    "missing_h1s": 1,
+    "broken_internal_links": 7,
+    "missing_alt_text": 46
+  },
+  "pages": [
+    {
+      "url": "https://www.buildwedge.com",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/contact",
+      "issues": []
+    },
+    {
+      "url": "https://www.buildwedge.com/insights",
+      "issues": []
+    },
+    {
+      "url": "https://www.buildwedge.com/about",
+      "issues": []
+    },
+    {
+      "url": "https://www.buildwedge.com/price",
+      "issues": [
+        {
+          "type": "missing_h1",
+          "detail": "No H1 tag found on page"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/tech-and-tools",
+      "issues": []
+    },
+    {
+      "url": "https://www.buildwedge.com/privacy-policy",
+      "issues": []
+    },
+    {
+      "url": "https://www.buildwedge.com/terms-conditions",
+      "issues": []
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/how-to-tell-if-your-wedge-is-weakening",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/only-5-percent-of-your-audience-is-ready-to-buy-today",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/the-five-types-of-bottom-of-funnel-content",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/the-five-types-of-middle-of-funnel-content",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/the-six-types-of-top-of-funnel-content",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/the-social-media-engagement-puzzle",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/insights/your-audience-personas-were-built-for-media-targeting-not-storytelling",
+      "issues": [
+        {
+          "type": "broken_link",
+          "detail": "Link to https://www.buildwedge.com/team-members/kim-elizabeth-james returned 404"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/blog-categories/insight",
+      "issues": [
+        {
+          "type": "missing_meta_description",
+          "detail": "No meta description tag found"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/strategy/campaign-project-strategy",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/strategy/content",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/strategy/differentiation",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/strategy/social-media",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/digital-marketing/ai-search-optimisation",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/digital-marketing/google-ads",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/digital-marketing/linkedin-ads",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/digital-marketing/meta-ads",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/digital-marketing/organic-social-content",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/research/campaign-diagnostics",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/research/competitor-benchmarking",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/research/customer-marketing-insights",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/69828cf92a511054d868a4b5_onthehouse.svg"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/training-workshops/ai-for-marketing-training",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f80_photo-landscape-04.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f80_photo-landscape-04.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f8d_photo-landscape-03.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/training-workshops/google-ads-training",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f80_photo-landscape-04.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f80_photo-landscape-04.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f8d_photo-landscape-03.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        }
+      ]
+    },
+    {
+      "url": "https://www.buildwedge.com/training-workshops/social-media-marketing-training",
+      "issues": [
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41767013_dev.png"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f80_photo-landscape-04.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f80_photo-landscape-04.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f8d_photo-landscape-03.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        },
+        {
+          "type": "missing_alt",
+          "detail": "Image src: https://cdn.prod.website-files.com/6942025837f366aa41766eb8/6942025a37f366aa41766f61_photo-art-05.webp"
+        }
+      ]
+    }
+  ]
+}

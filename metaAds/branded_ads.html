@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fowler Homes — Brand Ads</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --red: #da291c;
+    --red-dark: #b82218;
+    --black: #000000;
+    --grey-dark: #7c7b7a;
+    --grey-light: #dcddde;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f0f0;
+    color: var(--black);
+    padding: 40px 20px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .page-header p {
+    color: #555;
+    margin-top: 8px;
+    font-size: 14px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* Copy block for primary text */
+  .copy-block {
+    max-width: 680px;
+    margin: 0 auto 48px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 28px 32px;
+  }
+
+  .copy-block .copy-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .copy-block .copy-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .copy-block .copy-headline {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .copy-block .copy-cta {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--grey-dark);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .copy-block .copy-cta .pill {
+    background: #e8e8e8;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.5px;
+  }
+
+  .section-label {
+    text-align: center;
+    margin: 80px 0 12px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--black);
+  }
+
+  .section-notes {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 13px;
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+
+  .ad-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .ad-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ad-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    margin-bottom: 12px;
+  }
+
+  .ad-format {
+    font-size: 10px;
+    color: #555;
+    margin-top: 8px;
+  }
+
+  /* ========================================
+     CANVAS SIZES
+     ======================================== */
+  .ad-square {
+    width: 540px;
+    height: 540px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .ad-portrait {
+    width: 432px;
+    height: 540px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .ad-story {
+    width: 304px;
+    height: 540px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  /* ========================================
+     CONCEPT A — "Your Style of Living" Hero
+     Full-bleed, minimal text, pure brand
+     ======================================== */
+  .brand-hero {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+  }
+
+  .brand-hero .gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55%;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+  }
+
+  .brand-hero .brand-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 44px 44px;
+  }
+
+  .brand-hero .tagline-upper {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+  }
+
+  .brand-hero .brand-headline {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.12;
+    margin-bottom: 14px;
+  }
+
+  .brand-hero .brand-headline .accent {
+    color: var(--red);
+  }
+
+  .brand-hero .brand-sub {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    max-width: 340px;
+    margin-bottom: 24px;
+  }
+
+  .brand-hero .brand-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-hero .brand-footer .est {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .brand-hero .brand-footer img {
+    height: 56px;
+    filter: brightness(0) invert(1);
+  }
+
+  /* Top logo lockup */
+  .brand-hero .top-logo-lockup {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 2;
+  }
+
+  .brand-hero .top-logo-lockup img {
+    height: 72px;
+    filter: brightness(0) invert(1);
+    opacity: 0.95;
+  }
+
+  /* ========================================
+     CONCEPT B — Brand Pillars Split
+     Image top, brand messaging bottom
+     ======================================== */
+  .brand-split {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-split .image-top {
+    height: 55%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .brand-split .image-top .red-accent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--red);
+  }
+
+  .brand-split .msg-bottom {
+    flex: 1;
+    padding: 28px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .brand-split .msg-bottom .tagline {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .brand-split .msg-bottom .headline {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .brand-split .msg-bottom .pillars {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+  }
+
+  .brand-split .msg-bottom .pillar {
+    text-align: center;
+  }
+
+  .brand-split .msg-bottom .pillar .p-val {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .brand-split .msg-bottom .pillar .p-lbl {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    margin-top: 4px;
+  }
+
+  .brand-split .msg-bottom .logo-corner {
+    position: absolute;
+    bottom: 24px;
+    right: 32px;
+  }
+
+  .brand-split .msg-bottom .logo-corner img {
+    height: 52px;
+  }
+
+  /* ========================================
+     CONCEPT C — Red Brand Statement
+     Bold type on red, no imagery
+     ======================================== */
+  .brand-red {
+    background: var(--red);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px;
+    text-align: center;
+    position: relative;
+  }
+
+  .brand-red .top-tagline {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+  }
+
+  .brand-red .logo-main {
+    margin-bottom: 36px;
+  }
+
+  .brand-red .logo-main img {
+    height: 90px;
+    filter: brightness(0) invert(1);
+  }
+
+  .brand-red .statement {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    max-width: 380px;
+  }
+
+  .brand-red .proof-row {
+    display: flex;
+    gap: 28px;
+    margin-top: 24px;
+  }
+
+  .brand-red .proof-item {
+    text-align: center;
+  }
+
+  .brand-red .proof-item .val {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .brand-red .proof-item .lbl {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  .brand-red .bottom-line {
+    position: absolute;
+    bottom: 40px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ========================================
+     CONCEPT D — Dark Brand with Red Bar
+     Cinematic, editorial feel
+     ======================================== */
+  .brand-dark {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .brand-dark .hero-img {
+    height: 60%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .brand-dark .hero-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(180deg, transparent 0%, var(--black) 100%);
+  }
+
+  .brand-dark .red-bar {
+    height: 4px;
+    background: var(--red);
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-dark .dark-content {
+    flex: 1;
+    padding: 28px 40px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .brand-dark .dark-content .tagline {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .brand-dark .dark-content .headline {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .brand-dark .dark-content .sub {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--grey-dark);
+    line-height: 1.5;
+  }
+
+  .brand-dark .dark-content .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .brand-dark .dark-content .logo-row .url {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .brand-dark .dark-content .logo-row img {
+    height: 52px;
+    filter: brightness(0) invert(1);
+  }
+
+  /* ========================================
+     CONCEPT E — Story: Brand Heritage Reel
+     ======================================== */
+  .brand-story-heritage {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand-story-heritage .bg-year {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 140px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .brand-story-heritage .story-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 28px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-story-heritage .story-content .logo-top {
+    margin-bottom: 32px;
+  }
+
+  .brand-story-heritage .story-content .logo-top img {
+    height: 68px;
+    filter: brightness(0) invert(1);
+  }
+
+  .brand-story-heritage .story-content .red-line {
+    width: 40px;
+    height: 3px;
+    background: var(--red);
+    margin-bottom: 28px;
+  }
+
+  .brand-story-heritage .story-content .big-line {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  .brand-story-heritage .story-content .big-line .red {
+    color: var(--red);
+  }
+
+  .brand-story-heritage .story-content .stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .brand-story-heritage .story-content .stat-item {
+    text-align: center;
+    position: relative;
+  }
+
+  .brand-story-heritage .story-content .stat-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .brand-story-heritage .story-content .stat-item .s-val {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .brand-story-heritage .story-content .stat-item .s-lbl {
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    margin-top: 4px;
+  }
+
+  .brand-story-heritage .story-content .brand-tagline {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .brand-story-heritage .bottom-img {
+    height: 35%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .brand-story-heritage .bottom-img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, var(--black) 0%, transparent 100%);
+  }
+
+  .brand-story-heritage .bottom-img .red-strip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--red);
+  }
+
+  /* ========================================
+     CONCEPT F — Carousel: Brand Pillars
+     Each card = one brand pillar
+     ======================================== */
+  .brand-pillar-card {
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-pillar-card .pillar-img {
+    height: 55%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .brand-pillar-card .pillar-img .pillar-number {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 36px;
+    height: 36px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .brand-pillar-card .pillar-img .swipe {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    color: var(--white);
+    opacity: 0.4;
+  }
+
+  .brand-pillar-card .pillar-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(180deg, transparent 0%, var(--black) 100%);
+  }
+
+  .brand-pillar-card .pillar-text {
+    flex: 1;
+    padding: 24px 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .brand-pillar-card .pillar-text .p-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .brand-pillar-card .pillar-text .p-headline {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .brand-pillar-card .pillar-text .p-body {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--grey-dark);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .brand-pillar-card .pillar-text .p-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .brand-pillar-card .pillar-text .p-footer .dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .brand-pillar-card .pillar-text .p-footer .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .brand-pillar-card .pillar-text .p-footer .dot.active {
+    background: var(--red);
+  }
+
+  .brand-pillar-card .pillar-text .p-footer img {
+    height: 48px;
+    filter: brightness(0) invert(1);
+  }
+
+  /* ========================================
+     CONCEPT G — Story: Full-bleed aspirational
+     ======================================== */
+  .brand-story-aspire {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .brand-story-aspire .aspire-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 50%, rgba(0,0,0,0.85) 100%);
+  }
+
+  .brand-story-aspire .aspire-top {
+    position: relative;
+    z-index: 1;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .brand-story-aspire .aspire-top img {
+    height: 64px;
+    filter: brightness(0) invert(1);
+  }
+
+  .brand-story-aspire .aspire-bottom {
+    position: relative;
+    z-index: 1;
+    padding: 0 28px 36px;
+    text-align: center;
+  }
+
+  .brand-story-aspire .aspire-bottom .a-tagline {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .brand-story-aspire .aspire-bottom .a-headline {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .brand-story-aspire .aspire-bottom .a-sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .brand-story-aspire .aspire-bottom .swipe-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ========================================
+     CONCEPT H — White clean with red accent
+     Premium, editorial
+     ======================================== */
+  .brand-white {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .brand-white .w-image {
+    height: 50%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .brand-white .w-image .logo-overlay {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+  }
+
+  .brand-white .w-image .logo-overlay img {
+    height: 56px;
+    filter: brightness(0) invert(1);
+  }
+
+  .brand-white .w-text {
+    flex: 1;
+    padding: 32px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .brand-white .w-text .red-bar {
+    width: 40px;
+    height: 3px;
+    background: var(--red);
+    margin-bottom: 16px;
+  }
+
+  .brand-white .w-text .w-headline {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .brand-white .w-text .w-body {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--grey-dark);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .brand-white .w-text .w-footer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--grey-light);
+  }
+
+  .brand-white .w-text .w-footer .w-stat {
+    text-align: center;
+  }
+
+  .brand-white .w-text .w-footer .w-stat .ws-val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--red);
+    line-height: 1;
+  }
+
+  .brand-white .w-text .w-footer .w-stat .ws-lbl {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+    margin-top: 2px;
+  }
+
+  .brand-white .w-text .w-footer img {
+    height: 48px;
+    margin-left: auto;
+  }
+
+  /* ========================================
+     META SPEC REFERENCE + COPY FIELD STYLES
+     ======================================== */
+  .spec-table {
+    max-width: 720px;
+    margin: 0 auto 60px;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .spec-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--red);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .spec-table td {
+    padding: 8px 14px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+  }
+
+  .spec-table td:first-child {
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  .spec-table .char-ok { color: #4caf50; }
+  .spec-table .char-warn { color: #ff9800; }
+  .spec-table .char-over { color: #f44336; }
+
+  /* Updated copy blocks with all Meta fields */
+  .copy-block {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .copy-block .block-header {
+    background: #f5f5f5;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .copy-block .block-header .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .copy-block .block-header .format-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+    background: #e8e8e8;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+
+  .copy-block .fields {
+    padding: 20px 28px;
+  }
+
+  .copy-block .field {
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .copy-block .field:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .copy-block .field-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .copy-block .field-label .fname {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--grey-dark);
+  }
+
+  .copy-block .field-label .char-count {
+    font-size: 9px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .copy-block .field-label .char-count.ok {
+    background: rgba(76, 175, 80, 0.15);
+    color: #4caf50;
+  }
+
+  .copy-block .field-label .char-count.warn {
+    background: rgba(255, 152, 0, 0.15);
+    color: #ff9800;
+  }
+
+  .copy-block .field-label .char-count.required {
+    background: rgba(218, 41, 28, 0.15);
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  .copy-block .field-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .copy-block .field-value.headline-val {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .copy-block .field-value.small-val {
+    font-size: 13px;
+    color: #999;
+  }
+
+  .copy-block .field-value .truncation-marker {
+    color: var(--red);
+    font-weight: 500;
+    font-size: 11px;
+  }
+
+  .copy-block .cta-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .copy-block .cta-button {
+    background: var(--red);
+    color: var(--white);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .copy-block .url-val {
+    font-size: 12px;
+    color: #666;
+    font-family: monospace;
+  }
+
+  /* Story safe zone indicators */
+  .ad-story .safe-zone-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px; /* 250/1920 * 540 */
+    border-bottom: 1px dashed rgba(255,0,0,0.3);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .ad-story .safe-zone-top::after {
+    content: 'SAFE ZONE — 250px from top';
+    position: absolute;
+    bottom: 4px;
+    right: 8px;
+    font-size: 7px;
+    color: rgba(255,0,0,0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .ad-story .safe-zone-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 96px; /* 340/1920 * 540 */
+    border-top: 1px dashed rgba(255,0,0,0.3);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .ad-story .safe-zone-bottom::after {
+    content: 'SAFE ZONE — 340px from bottom';
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    font-size: 7px;
+    color: rgba(255,0,0,0.4);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* Carousel card headline/description fields */
+  .carousel-fields {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .carousel-field-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 16px 20px;
+  }
+
+  .carousel-field-card .card-num {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .carousel-field-card .cf-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .carousel-field-card .cf-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+    min-width: 50px;
+  }
+
+  .carousel-field-card .cf-value {
+    font-size: 12px;
+    color: #333;
+  }
+
+  .carousel-field-card .cf-count {
+    font-size: 9px;
+    color: #4caf50;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  @media print {
+    body { background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .copy-block, .ad-wrapper, .section-label, .section-title, .section-notes, .spec-table, .page-header {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .section-label, .section-title, .section-notes {
+      break-after: avoid;
+      page-break-after: avoid;
+    }
+    .copy-block {
+      break-before: auto;
+      page-break-before: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Fowler Homes — Brand Ads</h1>
+  <p>Brand awareness creatives for Facebook & Instagram. All ad copy fields validated against Meta's required specifications. Character counts shown per field.</p>
+</div>
+
+<!-- META SPEC REFERENCE -->
+<table class="spec-table">
+  <tr>
+    <th>Field</th>
+    <th>Single Image / Video</th>
+    <th>Carousel (per card)</th>
+    <th>Stories / Reels</th>
+  </tr>
+  <tr>
+    <td>Primary Text</td>
+    <td>125 chars visible (before "See more")</td>
+    <td>80 chars recommended</td>
+    <td>125 chars visible</td>
+  </tr>
+  <tr>
+    <td>Headline</td>
+    <td>27–40 chars max</td>
+    <td>45 chars max</td>
+    <td>40 chars max</td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>18–30 chars (not all placements)</td>
+    <td>18 chars max</td>
+    <td>Not shown</td>
+  </tr>
+  <tr>
+    <td>CTA Button</td>
+    <td>Required — from Meta's list</td>
+    <td>Required — from Meta's list</td>
+    <td>Required — from Meta's list</td>
+  </tr>
+  <tr>
+    <td>Destination URL</td>
+    <td>Required</td>
+    <td>Required (per card or shared)</td>
+    <td>Required</td>
+  </tr>
+  <tr>
+    <td>Image Size</td>
+    <td>1080×1080 (1:1) or 1080×1350 (4:5)</td>
+    <td>1080×1080 (1:1)</td>
+    <td>1080×1920 (9:16)</td>
+  </tr>
+  <tr>
+    <td>Safe Zones (Stories)</td>
+    <td>—</td>
+    <td>—</td>
+    <td>250px top / 340px bottom</td>
+  </tr>
+</table>
+
+
+<!-- ==========================================
+     CONCEPT A: "Your Style of Living" Hero
+     ========================================== -->
+
+<div class="section-label">Concept A — Full-Bleed Hero</div>
+<h2 class="section-title">"Your Style of Living"</h2>
+<p class="section-notes">Let the photography do the heavy lifting. Minimal text overlay. Brand tagline front and centre. The image IS the ad — text just anchors it. Run with best exterior photography.</p>
+
+<div class="copy-block">
+  <div class="block-header">
+    <span class="label">Ad Copy — Concept A</span>
+    <span class="format-tag">Single Image</span>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Primary Text</span>
+        <span class="char-count ok">113 / 125 chars visible</span>
+      </div>
+      <div class="field-value">Every Fowler home starts with a conversation. Your ideas. Your section. Your lifestyle. We bring it all together. <span class="truncation-marker">... See more</span><br><br>Custom designed, locally built, and backed by over 40 years of building experience across New Zealand.<br><br>Fowler Homes. Your style of living.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Headline</span>
+        <span class="char-count ok">20 / 40 chars</span>
+      </div>
+      <div class="field-value headline-val">Your Style of Living</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Description</span>
+        <span class="char-count ok">22 / 30 chars</span>
+      </div>
+      <div class="field-value small-val">Custom homes since 1984</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">CTA Button</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-button">Learn More</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Destination URL</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="url-val">https://www.fowlerhomes.co.nz</div>
+    </div>
+  </div>
+</div>
+
+<div class="ad-row">
+
+  <!-- Square -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Square 1:1</div>
+    <div class="ad-square brand-hero" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/exterior-fowler-homes-auckland-south-33-1900wide.jpg');">
+      <div class="top-logo-lockup">
+        <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+      </div>
+      <div class="gradient"></div>
+      <div class="brand-content">
+        <div class="tagline-upper">Est. 1984</div>
+        <div class="brand-headline">Your style<br>of <span class="accent">living.</span></div>
+        <div class="brand-sub">Custom designed homes across 13+ regions. Built by locals, backed by 40 years.</div>
+        <div class="brand-footer">
+          <div class="est">fowlerhomes.co.nz</div>
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+  <!-- Portrait -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Portrait 4:5</div>
+    <div class="ad-portrait brand-hero" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/front-exterior-fowler-homes-waikato-show-home-image-51.jpg');">
+      <div class="top-logo-lockup">
+        <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+      </div>
+      <div class="gradient"></div>
+      <div class="brand-content">
+        <div class="tagline-upper">Your Style of Living</div>
+        <div class="brand-headline">Designed around<br>how you <span class="accent">actually</span><br>live.</div>
+        <div class="brand-sub">Every home is custom designed to your section, your budget, and your lifestyle.</div>
+        <div class="brand-footer">
+          <div class="est">40 years building for Kiwis</div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1350</div>
+  </div>
+
+  <!-- Story -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Story / Reel — 9:16</div>
+    <div class="ad-story brand-story-aspire" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/exterior-fowler-homes-waikato-show-home-image-49.jpg');">
+      <div class="safe-zone-top"></div>
+      <div class="safe-zone-bottom"></div>
+      <div class="aspire-gradient"></div>
+      <div class="aspire-top">
+        <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+      </div>
+      <div class="aspire-bottom">
+        <div class="a-tagline">Your Style of Living</div>
+        <div class="a-headline">Custom designed.<br>Locally built.<br>Yours.</div>
+        <div class="a-sub">40 years building homes<br>for Kiwi families.</div>
+        <div class="swipe-cta">Swipe up to learn more ↑</div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1920</div>
+  </div>
+
+</div>
+
+
+<!-- ==========================================
+     CONCEPT B: White Clean with Red Accent
+     ========================================== -->
+
+<div class="section-label">Concept B — Clean Editorial</div>
+<h2 class="section-title">"Built Around You"</h2>
+<p class="section-notes">Premium, clean white layout. Image does the aspiration, the text panel communicates trust. Stat badges reinforce credibility without being pushy.</p>
+
+<div class="copy-block">
+  <div class="block-header">
+    <span class="label">Ad Copy — Concept B</span>
+    <span class="format-tag">Single Image</span>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Primary Text</span>
+        <span class="char-count ok">102 / 125 chars visible</span>
+      </div>
+      <div class="field-value">When you build with Fowler Homes, you deal directly with the owners. No call centres. No head office. <span class="truncation-marker">... See more</span><br><br>We build relationships as well as houses. Locally owned and operated across New Zealand since 1984.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Headline</span>
+        <span class="char-count ok">23 / 40 chars</span>
+      </div>
+      <div class="field-value headline-val">Build With Fowler Homes</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Description</span>
+        <span class="char-count ok">19 / 30 chars</span>
+      </div>
+      <div class="field-value small-val">NZ-owned since 1984</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">CTA Button</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-button">Learn More</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Destination URL</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="url-val">https://www.fowlerhomes.co.nz</div>
+    </div>
+  </div>
+</div>
+
+<div class="ad-row">
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Portrait 4:5</div>
+    <div class="ad-portrait brand-white">
+      <div class="w-image" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/kitchen-island-fowler-homes-waikato-show-home-image-31.jpg');">
+        <div class="logo-overlay">
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+      <div class="w-text">
+        <div class="red-bar"></div>
+        <div class="w-headline">Built around the way you live.</div>
+        <div class="w-body">From first homes to forever homes — every Fowler home is custom designed to suit your section, budget, and lifestyle.</div>
+        <div class="w-footer">
+          <div class="w-stat">
+            <div class="ws-val">40+</div>
+            <div class="ws-lbl">Years</div>
+          </div>
+          <div class="w-stat">
+            <div class="ws-val">13+</div>
+            <div class="ws-lbl">Regions</div>
+          </div>
+          <div class="w-stat">
+            <div class="ws-val">1000s</div>
+            <div class="ws-lbl">Homes</div>
+          </div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1350</div>
+  </div>
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Square 1:1</div>
+    <div class="ad-square brand-white">
+      <div class="w-image" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/06/jacks-point-queenstown-fowler-homes-living-fireplace-63-1.jpg');">
+        <div class="logo-overlay">
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+      <div class="w-text">
+        <div class="red-bar"></div>
+        <div class="w-headline">Proudly local. Proudly yours.</div>
+        <div class="w-body">NZ-owned and operated since 1984. You work directly with the people who build your home.</div>
+        <div class="w-footer">
+          <div class="w-stat">
+            <div class="ws-val">40+</div>
+            <div class="ws-lbl">Years</div>
+          </div>
+          <div class="w-stat">
+            <div class="ws-val">13+</div>
+            <div class="ws-lbl">Regions</div>
+          </div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+</div>
+
+
+<!-- ==========================================
+     CONCEPT C: Red Brand Statement
+     ========================================== -->
+
+<div class="section-label">Concept C — Bold Red Statement</div>
+<h2 class="section-title">"Since 1984. Still Family Owned."</h2>
+<p class="section-notes">No imagery. Pure brand statement on red. Strong for reach/frequency — instantly recognisable as Fowler. Thumb-stopping because it's different from every other builder ad showing a house.</p>
+
+<div class="copy-block">
+  <div class="block-header">
+    <span class="label">Ad Copy — Concept C</span>
+    <span class="format-tag">Single Image</span>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Primary Text</span>
+        <span class="char-count ok">122 / 125 chars visible</span>
+      </div>
+      <div class="field-value">Fowler Homes has been building for Kiwi families since 1984. Locally owned. Locally operated. From Northland to Queenstown. <span class="truncation-marker">... See more</span><br><br>We're the builder who actually knows your neighbourhood. Your style of living.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Headline</span>
+        <span class="char-count ok">27 / 40 chars</span>
+      </div>
+      <div class="field-value headline-val">40 Years Building for Kiwis</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Description</span>
+        <span class="char-count ok">19 / 30 chars</span>
+      </div>
+      <div class="field-value small-val">NZ-owned & operated</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">CTA Button</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-button">Learn More</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Destination URL</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="url-val">https://www.fowlerhomes.co.nz</div>
+    </div>
+  </div>
+</div>
+
+<div class="ad-row">
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Square 1:1</div>
+    <div class="ad-square brand-red">
+      <div class="top-tagline">Your Style of Living</div>
+      <div class="logo-main">
+        <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+      </div>
+      <div class="statement">Locally owned.<br>Locally built.<br>Since 1984.</div>
+      <div class="proof-row">
+        <div class="proof-item">
+          <div class="val">40+</div>
+          <div class="lbl">Years</div>
+        </div>
+        <div class="proof-item">
+          <div class="val">13+</div>
+          <div class="lbl">Regions</div>
+        </div>
+        <div class="proof-item">
+          <div class="val">1000s</div>
+          <div class="lbl">Homes Built</div>
+        </div>
+      </div>
+      <div class="bottom-line">fowlerhomes.co.nz</div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Story / Reel — 9:16</div>
+    <div class="ad-story brand-story-heritage">
+      <div class="safe-zone-top"></div>
+      <div class="safe-zone-bottom"></div>
+      <div class="bg-year">1984</div>
+      <div class="story-content">
+        <div class="logo-top">
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+        <div class="red-line"></div>
+        <div class="big-line">Building homes<br>for <span class="red">Kiwi families</span><br>since 1984.</div>
+        <div class="stats">
+          <div class="stat-item">
+            <div class="s-val">40+</div>
+            <div class="s-lbl">Years</div>
+          </div>
+          <div class="stat-item">
+            <div class="s-val">13+</div>
+            <div class="s-lbl">Regions</div>
+          </div>
+          <div class="stat-item">
+            <div class="s-val">1000s</div>
+            <div class="s-lbl">Homes</div>
+          </div>
+        </div>
+        <div class="brand-tagline">Your Style of Living</div>
+      </div>
+      <div class="bottom-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/covered-outdoor-living-fowler-homes-auckland-south-29-scaled.jpg');">
+        <div class="red-strip"></div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1920</div>
+  </div>
+
+</div>
+
+
+<!-- ==========================================
+     CONCEPT D: Dark Cinematic
+     ========================================== -->
+
+<div class="section-label">Concept D — Dark Cinematic</div>
+<h2 class="section-title">"Not Just a House. A Fowler Home."</h2>
+<p class="section-notes">Dark, moody, premium. Big hero image with a thin red bar accent separating image from text. Feels like a luxury brand, not a volume builder. Interior photography works best here.</p>
+
+<div class="copy-block">
+  <div class="block-header">
+    <span class="label">Ad Copy — Concept D</span>
+    <span class="format-tag">Single Image</span>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Primary Text</span>
+        <span class="char-count ok">121 / 125 chars visible</span>
+      </div>
+      <div class="field-value">Kiwi families have trusted Fowler Homes for over 40 years. We design around how you actually live — your section, your way. <span class="truncation-marker">... See more</span><br><br>Not from a template, but from a conversation. Custom designed and locally built across 13+ regions.<br><br>See what's possible at fowlerhomes.co.nz</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Headline</span>
+        <span class="char-count ok">16 / 40 chars</span>
+      </div>
+      <div class="field-value headline-val">Not Just a House</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Description</span>
+        <span class="char-count ok">13 / 30 chars</span>
+      </div>
+      <div class="field-value small-val">A Fowler Home</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">CTA Button</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-button">Learn More</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Destination URL</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="url-val">https://www.fowlerhomes.co.nz</div>
+    </div>
+  </div>
+</div>
+
+<div class="ad-row">
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Portrait 4:5</div>
+    <div class="ad-portrait brand-dark">
+      <div class="hero-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/master-ensuite-bathroom-fowler-homes-waikato-show-home-image-04.jpg');"></div>
+      <div class="red-bar"></div>
+      <div class="dark-content">
+        <div class="tagline">Your Style of Living</div>
+        <div class="headline">Not just a house.<br>A Fowler Home.</div>
+        <div class="sub">Every detail considered. Every finish chosen by you. Custom designed and locally built since 1984.</div>
+        <div class="logo-row">
+          <span class="url">fowlerhomes.co.nz</span>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1350</div>
+  </div>
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Square 1:1</div>
+    <div class="ad-square brand-dark">
+      <div class="hero-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/kitchen-island-fowler-homes-waikato-show-home-image-31.jpg');"></div>
+      <div class="red-bar"></div>
+      <div class="dark-content">
+        <div class="tagline">Custom Design & Build</div>
+        <div class="headline">Where your ideas become home.</div>
+        <div class="sub">NZ-owned. 40+ years. 13+ regions. You work directly with the people who build your home.</div>
+        <div class="logo-row">
+          <span class="url">fowlerhomes.co.nz</span>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+</div>
+
+
+<!-- ==========================================
+     CONCEPT E: Brand Pillars Carousel
+     ========================================== -->
+
+<div class="section-label">Concept E — Brand Pillars Carousel</div>
+<h2 class="section-title">"7 Reasons to Build With Fowler"</h2>
+<p class="section-notes">Carousel format — each card highlights one key brand pillar. Educational + brand building. Swipeable. End card drives to site. Directly mirrors the "7 Solid Reasons" from their brochure.</p>
+
+<div class="copy-block">
+  <div class="block-header">
+    <span class="label">Ad Copy — Concept E</span>
+    <span class="format-tag">Carousel (5 cards)</span>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Primary Text</span>
+        <span class="char-count ok">78 / 80 chars (carousel limit)</span>
+      </div>
+      <div class="field-value">What makes Fowler Homes different? It's not one thing — it's everything we do.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">CTA Button (all cards)</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-button">Learn More</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Destination URL</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="url-val">https://www.fowlerhomes.co.nz</div>
+    </div>
+  </div>
+</div>
+
+<!-- Carousel card-level fields -->
+<div class="carousel-fields">
+  <div class="carousel-field-card">
+    <div class="card-num">Card 1 — Heritage</div>
+    <div class="cf-row">
+      <span class="cf-label">Headline</span>
+      <span class="cf-value">Building for Kiwis since 1984</span>
+      <span class="cf-count">29 / 45</span>
+    </div>
+    <div class="cf-row">
+      <span class="cf-label">Desc</span>
+      <span class="cf-value">40+ years strong</span>
+      <span class="cf-count">16 / 18</span>
+    </div>
+  </div>
+  <div class="carousel-field-card">
+    <div class="card-num">Card 2 — Locally Owned</div>
+    <div class="cf-row">
+      <span class="cf-label">Headline</span>
+      <span class="cf-value">Work directly with the owners</span>
+      <span class="cf-count">29 / 45</span>
+    </div>
+    <div class="cf-row">
+      <span class="cf-label">Desc</span>
+      <span class="cf-value">NZ-owned & run</span>
+      <span class="cf-count">14 / 18</span>
+    </div>
+  </div>
+  <div class="carousel-field-card">
+    <div class="card-num">Card 3 — Custom Design</div>
+    <div class="cf-row">
+      <span class="cf-label">Headline</span>
+      <span class="cf-value">Custom designed around you</span>
+      <span class="cf-count">25 / 45</span>
+    </div>
+    <div class="cf-row">
+      <span class="cf-label">Desc</span>
+      <span class="cf-value">Your way, always</span>
+      <span class="cf-count">16 / 18</span>
+    </div>
+  </div>
+  <div class="carousel-field-card">
+    <div class="card-num">Card 4 — Fixed Price</div>
+    <div class="cf-row">
+      <span class="cf-label">Headline</span>
+      <span class="cf-value">Fixed-price. No surprises.</span>
+      <span class="cf-count">26 / 45</span>
+    </div>
+    <div class="cf-row">
+      <span class="cf-label">Desc</span>
+      <span class="cf-value">On time, on budget</span>
+      <span class="cf-count">18 / 18</span>
+    </div>
+  </div>
+  <div class="carousel-field-card" style="grid-column: 1 / -1; max-width: 350px; justify-self: center;">
+    <div class="card-num">Card 5 — Guarantee (End Card)</div>
+    <div class="cf-row">
+      <span class="cf-label">Headline</span>
+      <span class="cf-value">Build with peace of mind</span>
+      <span class="cf-count">24 / 45</span>
+    </div>
+    <div class="cf-row">
+      <span class="cf-label">Desc</span>
+      <span class="cf-value">10-year guarantee</span>
+      <span class="cf-count">17 / 18</span>
+    </div>
+  </div>
+</div>
+
+<div class="ad-row">
+
+  <!-- Card 1: Heritage -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Card 1 — Heritage</div>
+    <div class="ad-square brand-pillar-card">
+      <div class="pillar-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/exterior-fowler-homes-auckland-south-33-1900wide.jpg');">
+        <div class="pillar-number">1</div>
+        <div class="swipe">›</div>
+      </div>
+      <div class="pillar-text">
+        <div class="p-kicker">Why Fowler Homes</div>
+        <div class="p-headline">Building for Kiwis since 1984.</div>
+        <div class="p-body">One of the longest-standing building companies in New Zealand. Four decades of quality construction and trusted relationships.</div>
+        <div class="p-footer">
+          <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+  <!-- Card 2: Locally Owned -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Card 2 — Locally Owned</div>
+    <div class="ad-square brand-pillar-card">
+      <div class="pillar-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/elementor/thumbs/joe-and-shelley-cattle-fowler-homes-waikato-award-winning-building-team-qqscxr1ugqxjarb8b7m35arlpczr6onopi03qai050.png');">
+        <div class="pillar-number">2</div>
+        <div class="swipe">›</div>
+      </div>
+      <div class="pillar-text">
+        <div class="p-kicker">Why Fowler Homes</div>
+        <div class="p-headline">You work directly with the owners.</div>
+        <div class="p-body">NZ-owned and operated. Every region is run by local managing directors — not a faceless head office. The people who run it, build it.</div>
+        <div class="p-footer">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+  <!-- Card 3: Custom Design -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Card 3 — Custom Design</div>
+    <div class="ad-square brand-pillar-card">
+      <div class="pillar-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/06/jacks-point-queenstown-fowler-homes-living-fireplace-63-1.jpg');">
+        <div class="pillar-number">3</div>
+        <div class="swipe">›</div>
+      </div>
+      <div class="pillar-text">
+        <div class="p-kicker">Why Fowler Homes</div>
+        <div class="p-headline">Your home, designed around you.</div>
+        <div class="p-body">Custom design & build, plans to build from, knock down & rebuild — whatever your starting point, we'll make it yours.</div>
+        <div class="p-footer">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+</div>
+
+<div class="ad-row">
+
+  <!-- Card 4: Fixed Price -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Card 4 — Fixed Price</div>
+    <div class="ad-square brand-pillar-card">
+      <div class="pillar-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/covered-outdoor-living-fowler-homes-auckland-south-29-scaled.jpg');">
+        <div class="pillar-number">4</div>
+        <div class="swipe">›</div>
+      </div>
+      <div class="pillar-text">
+        <div class="p-kicker">Why Fowler Homes</div>
+        <div class="p-headline">Fixed-price contracts. No surprises.</div>
+        <div class="p-body">Group pricing from top suppliers means we lock in your price before we start. On time, on budget — that's the Fowler way.</div>
+        <div class="p-footer">
+          <div class="dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot active"></div>
+            <div class="dot"></div>
+          </div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+  <!-- Card 5: Guarantee -->
+  <div class="ad-wrapper">
+    <div class="ad-label">Card 5 — Guarantee (End Card)</div>
+    <div class="ad-square brand-red" style="justify-content: center;">
+      <div class="top-tagline">Why Fowler Homes</div>
+      <div class="logo-main">
+        <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+      </div>
+      <div class="statement">Build with peace of mind.</div>
+      <div style="font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 340px;">Every Fowler home comes with a 10-Year Master Builder Guarantee. Your home is protected. So is your investment.</div>
+      <div class="proof-row">
+        <div class="proof-item">
+          <div class="val" style="font-size: 22px;">10-Year</div>
+          <div class="lbl">Guarantee</div>
+        </div>
+        <div class="proof-item">
+          <div class="val" style="font-size: 22px;">Master</div>
+          <div class="lbl">Builders</div>
+        </div>
+      </div>
+      <div class="bottom-line">fowlerhomes.co.nz</div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+</div>
+
+
+<!-- ==========================================
+     CONCEPT F: Image-Led Split (Dark)
+     ========================================== -->
+
+<div class="section-label">Concept F — "Build With Us" Hero</div>
+<h2 class="section-title">"Build With Us"</h2>
+<p class="section-notes">Inspired by the "Build With Us" brochure. Warm, inviting. The split dark layout gives it a premium feel while letting the image speak. Best for awareness reach.</p>
+
+<div class="copy-block">
+  <div class="block-header">
+    <span class="label">Ad Copy — Concept F</span>
+    <span class="format-tag">Single Image</span>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Primary Text</span>
+        <span class="char-count ok">106 / 125 chars visible</span>
+      </div>
+      <div class="field-value">Thinking about building? Fowler Homes has been helping Kiwi families bring their vision to life since 1984. <span class="truncation-marker">... See more</span><br><br>Whether it's your first home, a custom design, or a knock down and rebuild — we'll build it. Over 40 years. 13+ regions. Let's start with a conversation.</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Headline</span>
+        <span class="char-count ok">23 / 40 chars</span>
+      </div>
+      <div class="field-value headline-val">Build With Fowler Homes</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Description</span>
+        <span class="char-count ok">17 / 30 chars</span>
+      </div>
+      <div class="field-value small-val">Start with a chat</div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">CTA Button</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="cta-row">
+        <span class="cta-button">Learn More</span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">
+        <span class="fname">Destination URL</span>
+        <span class="char-count required">Required</span>
+      </div>
+      <div class="url-val">https://www.fowlerhomes.co.nz</div>
+    </div>
+  </div>
+</div>
+
+<div class="ad-row">
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Portrait 4:5</div>
+    <div class="ad-portrait brand-dark">
+      <div class="hero-img" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2020/01/home-exterior-arrotown-build-fowler-homes-queenstown-2200251706.jpg');"></div>
+      <div class="red-bar"></div>
+      <div class="dark-content">
+        <div class="tagline">Est. 1984</div>
+        <div class="headline">Build with us.</div>
+        <div class="sub">Custom design & build. Plans collection. House & land. Knock down & rebuild. Whatever your dream — we'll build it.</div>
+        <div class="logo-row">
+          <span class="url">Your style of living</span>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1350</div>
+  </div>
+
+  <div class="ad-wrapper">
+    <div class="ad-label">Feed — Square 1:1</div>
+    <div class="ad-square brand-hero" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2022/08/Christchurch-2021-Beachville-_Main-scaled.jpg');">
+      <div class="top-logo-lockup">
+        <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes">
+      </div>
+      <div class="gradient"></div>
+      <div class="brand-content">
+        <div class="tagline-upper">Fowler Homes</div>
+        <div class="brand-headline">Build<br>with <span class="accent">us.</span></div>
+        <div class="brand-sub">First home. Dream home. Investment home. Custom designed and locally built since 1984.</div>
+        <div class="brand-footer">
+          <div class="est">fowlerhomes.co.nz</div>
+          <img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes" style="height:56px; filter: brightness(0) invert(1);">
+        </div>
+      </div>
+    </div>
+    <div class="ad-format">1080 × 1080</div>
+  </div>
+
+</div>
+
+</body>
+</html>

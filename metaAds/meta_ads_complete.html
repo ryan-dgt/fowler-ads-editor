@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fowler Homes — Meta Ads Complete</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --red: #da291c;
+    --red-dark: #b82218;
+    --black: #000000;
+    --black-soft: #1a1a1a;
+    --grey-dark: #7c7b7a;
+    --grey-light: #dcddde;
+    --grey-bg: #f5f5f5;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f0f0;
+    color: var(--black);
+  }
+
+  /* ========================================
+     STICKY NAV
+     ======================================== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--black-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 20px;
+    border-bottom: 3px solid var(--red);
+    flex-wrap: wrap;
+  }
+
+  .nav a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: all 0.2s;
+  }
+
+  .nav a:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .nav .sep {
+    color: rgba(255,255,255,0.15);
+    font-size: 10px;
+  }
+
+  /* ========================================
+     MASTER HEADER
+     ======================================== */
+  .master-header {
+    background: var(--black-soft);
+    padding: 56px 40px;
+    text-align: center;
+  }
+
+  .master-header img {
+    height: 64px;
+    margin-bottom: 28px;
+  }
+
+  .master-header h1 {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .master-header p {
+    font-size: 13px;
+    color: var(--grey-dark);
+    letter-spacing: 1px;
+  }
+
+  /* ========================================
+     SECTION BLOCKS
+     ======================================== */
+  .section-header {
+    background: var(--black-soft);
+    padding: 36px 40px;
+    text-align: center;
+  }
+
+  .section-header .section-kicker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  /* ========================================
+     FEEDBACK PANEL
+     ======================================== */
+  .feedback-panel {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px 32px;
+    background: var(--white);
+  }
+
+  .feedback-panel .fb-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .feedback-panel .number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--red);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .feedback-panel h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  .tag.done { background: #e8f5e9; color: #2e7d32; }
+  .tag.confirm { background: #fff3e0; color: #e65100; }
+  .tag.pending { background: #e3f2fd; color: #1565c0; }
+
+  .feedback-quote {
+    background: var(--grey-bg);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+    border-left: 3px solid var(--grey-dark);
+  }
+
+  .feedback-quote strong {
+    font-style: normal;
+    color: var(--black);
+  }
+
+  .changes h4 {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .changes ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .changes ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 7px;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .changes ul li::before {
+    content: '\2014';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  .assets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 13px;
+  }
+
+  .assets-table th {
+    text-align: left;
+    padding: 10px 16px;
+    background: var(--black-soft);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .assets-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #eee;
+    color: #444;
+  }
+
+  .assets-table tr:nth-child(even) td {
+    background: var(--grey-bg);
+  }
+
+  /* ========================================
+     CREATIVE AREA
+     ======================================== */
+  .creative-area {
+    padding: 40px 20px;
+  }
+
+  .creative-area .angle-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .creative-area .angle-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--black);
+    margin-bottom: 12px;
+  }
+
+  .creative-area .angle-notes {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 32px;
+    font-size: 13px;
+    color: var(--grey-dark);
+    line-height: 1.6;
+  }
+
+  .ad-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 40px; }
+  .ad-wrapper { display: flex; flex-direction: column; align-items: center; }
+  .ad-label { font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-dark); margin-bottom: 12px; }
+  .ad-format { font-size: 10px; color: #555; margin-top: 8px; }
+
+  .ad-square { width: 540px; height: 540px; position: relative; overflow: hidden; border-radius: 4px; }
+  .ad-portrait { width: 432px; height: 540px; position: relative; overflow: hidden; border-radius: 4px; }
+  .ad-story { width: 304px; height: 540px; position: relative; overflow: hidden; border-radius: 12px; }
+
+  /* C1 */
+  .c1 { background: var(--red); display: flex; flex-direction: column; justify-content: center; padding: 60px; }
+  .c1 .stat { font-size: 13px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 24px; }
+  .c1 .headline { font-size: 52px; font-weight: 800; line-height: 1.05; color: var(--white); margin-bottom: 28px; }
+  .c1 .headline em { font-style: normal; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .c1 .subline { font-size: 16px; font-weight: 400; line-height: 1.5; color: rgba(255,255,255,0.85); max-width: 360px; }
+  .c1 .logo-area { position: absolute; bottom: 40px; right: 40px; }
+  .c1 .logo-area img { height: 44px; filter: brightness(0) invert(1); }
+  .c1 .guarantee-badge { position: absolute; bottom: 40px; left: 60px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .c1 .guarantee-badge .icon { width: 28px; height: 28px; border: 2px solid rgba(255,255,255,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+  /* C2 */
+  .c2 { background: var(--black); display: flex; flex-direction: column; justify-content: space-between; padding: 0; }
+  .c2 .top-section { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 56px 56px 24px; }
+  .c2 .kicker { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 20px; }
+  .c2 .headline { font-size: 46px; font-weight: 800; line-height: 1.08; color: var(--white); }
+  .c2 .subtext { margin-top: 20px; font-size: 15px; font-weight: 400; color: var(--grey-dark); line-height: 1.5; }
+  .c2 .bottom-bar { background: var(--red); padding: 20px 56px; display: flex; align-items: center; justify-content: space-between; }
+  .c2 .bottom-bar .service { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--white); }
+  .c2 .bottom-bar img { height: 36px; filter: brightness(0) invert(1); }
+
+  /* C3 */
+  .c3 { background: var(--white); display: flex; flex-direction: column; }
+  .c3 .image-placeholder { height: 55%; background: linear-gradient(135deg, #2a2a2a 0%, #3d3d3d 50%, #2a2a2a 100%); background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-end; padding: 24px; }
+  .c3 .image-placeholder .home-style { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%); position: absolute; bottom: 0; left: 0; right: 0; padding: 40px 32px 20px; }
+  .c3 .image-placeholder .home-style span { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .c3 .quote-section { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .c3 .quote-mark { font-size: 72px; font-weight: 800; color: var(--red); line-height: 0.6; margin-bottom: 8px; font-family: Georgia, serif; }
+  .c3 .quote-text { font-size: 18px; font-weight: 500; line-height: 1.45; color: var(--black); margin-bottom: 16px; }
+  .c3 .quote-attr { font-size: 12px; font-weight: 600; color: var(--grey-dark); letter-spacing: 1px; text-transform: uppercase; }
+  .c3 .quote-section .logo-small { position: absolute; bottom: 28px; right: 36px; }
+  .c3 .quote-section .logo-small img { height: 32px; }
+
+  /* C4 */
+  .c4 { background: var(--black); display: flex; flex-direction: column; padding: 48px; }
+  .c4 .top { margin-bottom: 28px; }
+  .c4 .top .kicker { font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .c4 .top .headline { font-size: 30px; font-weight: 700; line-height: 1.15; color: var(--white); }
+  .c4 .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px; flex: 1; }
+  .c4 .step { display: flex; align-items: flex-start; gap: 12px; }
+  .c4 .step-num { width: 32px; height: 32px; min-width: 32px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--white); margin-top: 2px; }
+  .c4 .step-content .step-title { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
+  .c4 .step-content .step-desc { font-size: 10.5px; font-weight: 400; color: var(--grey-dark); line-height: 1.4; }
+  .c4 .bottom-row { margin-top: 24px; display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .c4 .bottom-row .tagline { font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--grey-dark); }
+  .c4 .bottom-row img { height: 36px; filter: brightness(0) invert(1); }
+
+  /* C5 */
+  .c5 { background: var(--white); display: flex; flex-direction: column; }
+  .c5 .photo-area { height: 50%; background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); background-size: cover; background-position: center top; position: relative; }
+  .c5 .photo-area .red-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: var(--red); }
+  .c5 .text-area { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .c5 .text-area .kicker { font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+  .c5 .text-area .headline { font-size: 28px; font-weight: 700; line-height: 1.2; color: var(--black); margin-bottom: 12px; }
+  .c5 .text-area .body { font-size: 13px; font-weight: 400; color: var(--grey-dark); line-height: 1.5; }
+  .c5 .text-area .logo-small { position: absolute; bottom: 28px; right: 36px; }
+  .c5 .text-area .logo-small img { height: 32px; }
+
+  /* C6 */
+  .c6 { background: var(--black); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 32px; text-align: center; }
+  .c6 .top-logo { margin-bottom: 40px; }
+  .c6 .top-logo img { height: 40px; filter: brightness(0) invert(1); }
+  .c6 .big-stat { font-size: 72px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 8px; }
+  .c6 .stat-label { font-size: 13px; font-weight: 500; color: var(--grey-dark); letter-spacing: 1px; margin-bottom: 40px; line-height: 1.5; }
+  .c6 .divider { width: 40px; height: 2px; background: var(--red); margin-bottom: 40px; }
+  .c6 .headline { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 16px; }
+  .c6 .subline { font-size: 13px; font-weight: 400; color: var(--grey-dark); line-height: 1.5; }
+  .c6 .cta-pill { margin-top: 32px; padding: 12px 28px; background: var(--red); border-radius: 24px; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); }
+
+  /* C7 */
+  .c7 { background: var(--white); display: flex; flex-direction: column; }
+  .c7 .render-area { height: 60%; background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%); background-size: cover; background-position: center; position: relative; }
+  .c7 .render-area .price-tag { position: absolute; top: 20px; left: 20px; background: var(--red); padding: 10px 18px; border-radius: 4px; }
+  .c7 .render-area .price-tag .from { font-size: 10px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .c7 .render-area .price-tag .price { font-size: 24px; font-weight: 800; color: var(--white); margin-top: 2px; }
+  .c7 .render-area .badge-row { position: absolute; bottom: 16px; left: 20px; display: flex; gap: 8px; }
+  .c7 .render-area .badge { background: rgba(0,0,0,0.75); padding: 6px 12px; border-radius: 3px; font-size: 11px; font-weight: 600; color: var(--white); }
+  .c7 .offer-details { flex: 1; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; }
+  .c7 .offer-details .location { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .c7 .offer-details .title { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 10px; line-height: 1.2; }
+  .c7 .offer-details .features { display: flex; gap: 16px; margin-bottom: 14px; }
+  .c7 .offer-details .feature { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--grey-dark); font-weight: 500; }
+  .c7 .offer-details .feature .icon { font-size: 16px; }
+  .c7 .offer-details .bottom-row { display: flex; align-items: center; justify-content: space-between; padding-top: 12px; border-top: 1px solid var(--grey-light); }
+  .c7 .offer-details .guarantees { display: flex; gap: 12px; }
+  .c7 .offer-details .guarantee { font-size: 9px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--grey-dark); padding: 4px 8px; border: 1px solid var(--grey-light); border-radius: 3px; }
+  .c7 .offer-details .bottom-row img { height: 28px; }
+  .c7 .render-area .package-type { position: absolute; top: 20px; right: 20px; padding: 8px 14px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); line-height: 1; }
+  .c7 .render-area .package-type.turnkey { background: rgba(0,0,0,0.85); }
+  .c7 .render-area .package-type.house-land { background: var(--red); }
+
+  /* C8 */
+  .c8 { background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 40%, #1a1a1a 100%); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: flex-end; padding: 0; position: relative; }
+  .c8 .gradient-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 65%; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%); }
+  .c8 .content { position: relative; z-index: 1; padding: 0 44px 44px; }
+  .c8 .content .tagline { font-size: 11px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--red); margin-bottom: 14px; }
+  .c8 .content .headline { font-size: 36px; font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 14px; }
+  .c8 .content .body { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 20px; max-width: 380px; }
+  .c8 .content .cta-row { display: flex; align-items: center; justify-content: space-between; }
+  .c8 .content .cta-button { padding: 10px 24px; background: var(--red); border-radius: 3px; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--white); }
+  .c8 .content .cta-row img { height: 36px; filter: brightness(0) invert(1); }
+
+  /* C9 */
+  .c9 { background: #f5f5f5; display: flex; flex-direction: column; }
+  .c9 .plan-visual { height: 60%; background: var(--white); display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 3px solid var(--red); overflow: hidden; }
+  .c9 .plan-visual .swipe-hint { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 24px; color: var(--red); opacity: 0.6; }
+  .c9 .plan-info { flex: 1; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; }
+  .c9 .plan-info .plan-title { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 4px; }
+  .c9 .plan-info .plan-subtitle { font-size: 12px; color: var(--grey-dark); margin-bottom: 14px; }
+  .c9 .plan-info .specs { display: flex; gap: 20px; margin-bottom: 14px; }
+  .c9 .plan-info .spec { text-align: center; }
+  .c9 .plan-info .spec-value { font-size: 22px; font-weight: 700; color: var(--red); }
+  .c9 .plan-info .spec-label { font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-dark); }
+  .c9 .plan-info .cta-text { font-size: 12px; font-weight: 600; color: var(--red); letter-spacing: 0.5px; }
+  .c9 .plan-info .cta-text::after { content: ' \2192'; }
+
+  /* C10 */
+  .c10 { background: var(--red); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 28px; text-align: center; }
+  .c10 .logo-top { margin-bottom: 24px; }
+  .c10 .logo-top img { height: 48px; filter: brightness(0) invert(1); }
+  .c10 .years-badge { width: 80px; height: 80px; border: 3px solid var(--white); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 28px; }
+  .c10 .years-badge .num { font-size: 32px; font-weight: 800; color: var(--white); line-height: 1; }
+  .c10 .years-badge .label { font-size: 8px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+  .c10 .headline { font-size: 24px; font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 16px; }
+  .c10 .stats-row { display: flex; gap: 20px; margin-top: 20px; }
+  .c10 .stat-item { text-align: center; }
+  .c10 .stat-item .val { font-size: 24px; font-weight: 800; color: var(--white); }
+  .c10 .stat-item .lbl { font-size: 8px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .c10 .tagline-bottom { margin-top: 32px; font-size: 10px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+  /* CHECKS */
+  .checks-container { max-width: 900px; margin: 0 auto; padding: 48px 32px; background: var(--white); }
+  .check-group { margin-bottom: 40px; }
+  .check-group h3 { font-size: 15px; font-weight: 600; color: var(--black); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--red); }
+  .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 13px; color: #444; border-bottom: 1px solid #f0f0f0; }
+  .check-item .ci { width: 22px; height: 22px; min-width: 22px; background: #e8f5e9; color: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-top: 1px; }
+  .check-item code { background: var(--grey-bg); padding: 1px 6px; border-radius: 3px; font-size: 12px; font-family: 'SF Mono', Monaco, monospace; }
+  .check-summary { background: #e8f5e9; border-radius: 8px; padding: 24px 28px; margin-top: 32px; border-left: 4px solid #2e7d32; }
+  .check-summary h3 { font-size: 16px; font-weight: 700; color: #2e7d32; margin-bottom: 8px; }
+  .check-summary p { font-size: 14px; color: #444; line-height: 1.6; }
+
+  .next-steps { background: var(--grey-bg); border-radius: 8px; padding: 32px; max-width: 900px; margin: 0 auto; }
+  .next-steps h2 { font-size: 18px; font-weight: 600; margin-bottom: 16px; display: block; }
+  .next-steps ol { padding-left: 20px; }
+  .next-steps ol li { margin-bottom: 10px; font-size: 14px; color: #444; }
+
+  .footer { text-align: center; padding: 40px; font-size: 12px; color: var(--grey-dark); border-top: 1px solid #ddd; background: var(--white); }
+
+  @media print {
+    body { background: #f0f0f0 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .nav { display: none; }
+    .feedback-panel, .ad-row, .ad-wrapper, .section-header, .check-group { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#s1">Logo</a><span class="sep">/</span>
+  <a href="#s2">Packages</a><span class="sep">/</span>
+  <a href="#s3">D&B Experts</a><span class="sep">/</span>
+  <a href="#s4">H&L Cards</a><span class="sep">/</span>
+  <a href="#s5">Plans</a><span class="sep">/</span>
+  <a href="#unchanged">Unchanged</a><span class="sep">/</span>
+  <a href="#listings">Listings</a><span class="sep">/</span>
+  <a href="#checks">Checks</a>
+</nav>
+
+<div class="master-header">
+  <img src="brandAssets/FH_Stacked/2. Fowler Homes Your Style of Living Stacked/a_Fowler_Homes_logo_reversed_2023.png" alt="Fowler Homes">
+  <h1>Meta Ads &mdash; Complete Review</h1>
+  <p>Feedback + updated creatives + validation &bull; February 2026</p>
+</div>
+
+<!-- ===== SECTION 1: LOGO ===== -->
+<div id="s1">
+  <div class="section-header"><div class="section-kicker">Feedback 1</div><h2>Reversed Stacked Logo</h2></div>
+  <div class="feedback-panel">
+    <div class="fb-row"><span class="number">1</span><h3>Reversed Stacked Logo</h3><span class="tag done">Done</span></div>
+    <div class="feedback-quote">"Wouldn't mind seeing the 'reversed' stacked logo used in some concepts."<br><strong>&mdash; Ruth</strong></div>
+    <div class="changes">
+      <h4>What Changed</h4>
+      <ul>
+        <li>Extracted the reversed stacked logo (white text, red roofline) from the brand assets zip</li>
+        <li>Swapped into <strong>4 concepts</strong> that use dark or red backgrounds:</li>
+      </ul>
+      <table class="assets-table">
+        <tr><th>Concept</th><th>Format</th><th>Background</th><th>Logo Size</th></tr>
+        <tr><td>Angle 1 &mdash; Packages (square)</td><td>1080 x 1080</td><td>Red</td><td>80px</td></tr>
+        <tr><td>Angle 1 &mdash; Packages (story)</td><td>1080 x 1920</td><td>Black</td><td>72px</td></tr>
+        <tr><td>Angle 2 &mdash; D&B Experts (portrait)</td><td>1080 x 1350</td><td>Black</td><td>52px</td></tr>
+        <tr><td>Angle 9 &mdash; Brand Heritage (story)</td><td>1080 x 1920</td><td>Red</td><td>72px</td></tr>
+      </table>
+      <ul><li>Remaining concepts keep the horizontal logo for variety &mdash; see each placement in context below &darr;</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 2: ANGLE 1 — PACKAGES ===== -->
+<div id="s2">
+  <div class="section-header"><div class="section-kicker">Feedback 2 + Angle 1</div><h2>Fixed Price &rarr; Packages</h2></div>
+  <div class="feedback-panel">
+    <div class="fb-row"><span class="number">2</span><h3>Angle 1 &mdash; Packages</h3><span class="tag done">Done</span></div>
+    <div class="feedback-quote">"With the Fixed Price creative, is there a way to mould this message into our Packages for sale? As this is the real value for buyers/investors..."<br><strong>&mdash; Ruth</strong></div>
+    <div class="changes">
+      <h4>What Changed</h4>
+      <ul>
+        <li>Renamed from "Fixed Price Means Fixed Price" to <strong>"Your Package. Your Price. Sorted."</strong></li>
+        <li>Square ad leads with "House & Land / Turnkey Packages" as the kicker</li>
+        <li>Messaging: <em>"Land, home, fittings &mdash; everything included in one fixed price. No variations. No surprises. Just your keys."</em></li>
+        <li>Story format focuses on Turnkey & House & Land being move-in ready</li>
+        <li>Removed "83% of builds go over budget" stat &mdash; replaced with package-first messaging</li>
+      </ul>
+    </div>
+  </div>
+  <div class="creative-area">
+    <div class="angle-label">Angle 1 &mdash; Package Value</div>
+    <div class="angle-title">"Your Package. Your Price. Sorted."</div>
+    <div class="ad-row">
+      <div class="ad-wrapper">
+        <div class="ad-label">Feed &mdash; Square 1:1</div>
+        <div class="ad-square c1">
+          <div class="stat">House & Land / Turnkey Packages</div>
+          <div class="headline">Your package.<br>Your price.<br><em>Sorted.</em></div>
+          <div class="subline">Land, home, fittings &mdash; everything included in one fixed price. No variations. No surprises. Just your keys.</div>
+          <div class="guarantee-badge"><div class="icon">&#10003;</div>10-Year Master Build Guarantee</div>
+          <div class="logo-area"><img src="brandAssets/FH_Stacked/2. Fowler Homes Your Style of Living Stacked/a_Fowler_Homes_logo_reversed_2023.png" alt="Fowler Homes" style="height: 80px;"></div>
+        </div>
+        <div class="ad-format">1080 &times; 1080</div>
+      </div>
+      <div class="ad-wrapper">
+        <div class="ad-label">Story / Reel &mdash; 9:16</div>
+        <div class="ad-story c6">
+          <div class="top-logo"><img src="brandAssets/FH_Stacked/2. Fowler Homes Your Style of Living Stacked/a_Fowler_Homes_logo_reversed_2023.png" alt="Fowler Homes" style="height: 72px;"></div>
+          <div class="big-stat" style="font-size: 48px;">1</div>
+          <div class="stat-label">Fixed price.<br>Everything included.</div>
+          <div class="divider"></div>
+          <div class="headline">Turnkey &<br>House & Land<br>Packages</div>
+          <div class="subline">Land. Home. Fittings. Landscaping.<br>One price. One contract.<br>Move-in ready.</div>
+          <div class="cta-pill">View packages</div>
+        </div>
+        <div class="ad-format">1080 &times; 1920</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 3: ANGLE 2 — D&B EXPERTS ===== -->
+<div id="s3">
+  <div class="section-header"><div class="section-kicker">Feedback 3 + Angle 2</div><h2>Design & Build Experts</h2></div>
+  <div class="feedback-panel">
+    <div class="fb-row"><span class="number">3</span><h3>Angle 2 &mdash; D&B Experts</h3><span class="tag done">Done</span><span class="tag pending">Icons Pending</span></div>
+    <div class="feedback-quote">"I'd probably like to roll out more 'Design & Build experts' message. This is the foundation of FH, it also ties to the knock down & rebuild."<br><strong>&mdash; Ruth</strong></div>
+    <div class="changes">
+      <h4>What Changed</h4>
+      <ul>
+        <li>Renamed from "Love the Street. Hate the House." to <strong>"Design & Build Experts Since 1984"</strong></li>
+        <li><strong>Square (1080x1080):</strong> "Your vision. Built by experts." &mdash; lists Custom D&B, Plans Collection, KD&R</li>
+        <li><strong>New portrait (1080x1350):</strong> "We don't just build homes. We design them <span style="color: var(--red);">with you.</span>"</li>
+        <li>Stacked reversed logo in the portrait card</li>
+      </ul>
+      <h4>Still Needed</h4>
+      <ul><li>Ruth to provide D&B icons for the Build With Us e-doc &mdash; can integrate once received</li></ul>
+    </div>
+  </div>
+  <div class="creative-area">
+    <div class="angle-label">Angle 2 &mdash; Design & Build Expertise</div>
+    <div class="angle-title">"Design & Build Experts Since 1984"</div>
+    <div class="ad-row">
+      <div class="ad-wrapper">
+        <div class="ad-label">Feed &mdash; Square 1:1</div>
+        <div class="ad-square c2">
+          <div class="top-section"><div class="kicker">Design & Build Experts</div><div class="headline">Your vision.<br>Built by<br>experts.</div><div class="subtext">Custom Design & Build. Plans Collection.<br>Knock Down & Rebuild. Over 40 years of<br>bringing Kiwi homes to life.</div></div>
+          <div class="bottom-bar"><div class="service">Design & Build Since 1984</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div>
+        </div>
+        <div class="ad-format">1080 &times; 1080</div>
+      </div>
+      <div class="ad-wrapper">
+        <div class="ad-label">Feed &mdash; Portrait 4:5</div>
+        <div class="ad-portrait c2">
+          <div class="top-section" style="padding: 48px 48px 20px;"><div class="kicker">Custom Design & Build</div><div class="headline" style="font-size: 38px;">We don't just<br>build homes.<br>We design them<br><span style="color: var(--red);">with you.</span></div><div class="subtext">From first sketch to final walkthrough &mdash; your ideas, our expertise, one team from start to finish.</div></div>
+          <div class="bottom-bar"><div class="service">Knock Down & Rebuild Available</div><img src="brandAssets/FH_Stacked/2. Fowler Homes Your Style of Living Stacked/a_Fowler_Homes_logo_reversed_2023.png" alt="Fowler Homes" style="height: 52px;"></div>
+        </div>
+        <div class="ad-format">1080 &times; 1350</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 4: ANGLE 7 — H&L CARDS ===== -->
+<div id="s4">
+  <div class="section-header"><div class="section-kicker">Feedback 5 + Angle 7</div><h2>Clear Turnkey vs H&L Labelling</h2></div>
+  <div class="feedback-panel">
+    <div class="fb-row"><span class="number">5</span><h3>Angle 7 &mdash; Turnkey vs H&L</h3><span class="tag done">Done</span><span class="tag confirm">Confirm Prices</span></div>
+    <div class="feedback-quote">"Needs to have clear labelling if a Turnkey or House & Land Package (they are different things). Website has all the accurate info & prices."<br><strong>&mdash; Ruth</strong></div>
+    <div class="changes">
+      <h4>What Changed</h4>
+      <ul>
+        <li>Expanded from 1 generic card to <strong>3 cards with distinct package types</strong></li>
+        <li>Each card has a <strong>prominent package-type badge</strong> at top-right: black = Turnkey, red = House & Land</li>
+        <li>Bottom badges reinforce differences ("10% Deposit" vs "Progress Payments")</li>
+      </ul>
+      <table class="assets-table">
+        <tr><th>Card</th><th>Package Type</th><th>Location</th><th>Badge</th></tr>
+        <tr><td>Card 1</td><td>Turnkey House & Land</td><td>Shotover Rise, Queenstown</td><td>Black</td></tr>
+        <tr><td>Card 2</td><td>Turnkey Home & Income</td><td>Hanley's Farm, Queenstown</td><td>Black</td></tr>
+        <tr><td>Card 3</td><td>House & Land Package</td><td>Queens Road, New Plymouth</td><td>Red</td></tr>
+      </table>
+      <h4>Please Confirm</h4>
+      <ul>
+        <li><strong>Prices are placeholders</strong> &mdash; Ruth to confirm from fowlerhomes.co.nz</li>
+        <li>Swap generic photos for specific listing images from Google Drive once downloaded</li>
+      </ul>
+    </div>
+  </div>
+  <div class="creative-area">
+    <div class="angle-label">Angle 7 &mdash; House & Land / Direct Response</div>
+    <div class="angle-title">Package Offer Cards</div>
+    <div class="ad-row">
+      <div class="ad-wrapper">
+        <div class="ad-label">Turnkey House & Land</div>
+        <div class="ad-portrait c7">
+          <div class="render-area" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2020/01/home-exterior-arrotown-build-fowler-homes-queenstown-2200251706.jpg');">
+            <div class="package-type turnkey">Turnkey House & Land</div>
+            <div class="price-tag"><div class="from">Turnkey From</div><div class="price">$895,000</div></div>
+            <div class="badge-row"><div class="badge">Fixed Price</div><div class="badge">10% Deposit</div></div>
+          </div>
+          <div class="offer-details">
+            <div class="location">Shotover Rise, Queenstown</div><div class="title">Lot 214 &mdash; Turnkey Package</div>
+            <div class="features"><div class="feature"><span class="icon">&#8962;</span> 3 Bed, 2 Bath</div><div class="feature"><span class="icon">&#128663;</span> Double garage</div></div>
+            <div class="bottom-row"><div class="guarantees"><div class="guarantee">10-Year Guarantee</div><div class="guarantee">Master Builder</div></div><img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes"></div>
+          </div>
+        </div>
+        <div class="ad-format">1080 &times; 1350</div>
+      </div>
+      <div class="ad-wrapper">
+        <div class="ad-label">Turnkey Home & Income</div>
+        <div class="ad-portrait c7">
+          <div class="render-area" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2022/08/Christchurch-2021-Beachville-_Main-scaled.jpg');">
+            <div class="package-type turnkey">Turnkey Home & Income</div>
+            <div class="price-tag"><div class="from">Turnkey From</div><div class="price">$1,095,000</div></div>
+            <div class="badge-row"><div class="badge">Dual Income</div><div class="badge">Fixed Price</div></div>
+          </div>
+          <div class="offer-details">
+            <div class="location">Hanley's Farm, Queenstown</div><div class="title">Lot 827 &mdash; Home & Income</div>
+            <div class="features"><div class="feature"><span class="icon">&#8962;</span> 4 Bed, 2 Bath</div><div class="feature"><span class="icon">&#128663;</span> Double garage</div></div>
+            <div class="bottom-row"><div class="guarantees"><div class="guarantee">10-Year Guarantee</div><div class="guarantee">Master Builder</div></div><img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes"></div>
+          </div>
+        </div>
+        <div class="ad-format">1080 &times; 1350</div>
+      </div>
+      <div class="ad-wrapper">
+        <div class="ad-label">House & Land Package</div>
+        <div class="ad-portrait c7">
+          <div class="render-area" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/exterior-fowler-homes-auckland-south-33-1900wide.jpg');">
+            <div class="package-type house-land">House & Land Package</div>
+            <div class="price-tag"><div class="from">House & Land From</div><div class="price">$685,000</div></div>
+            <div class="badge-row"><div class="badge">Fixed Price</div><div class="badge">Progress Payments</div></div>
+          </div>
+          <div class="offer-details">
+            <div class="location">Glen Avon, New Plymouth</div><div class="title">Queens Road &mdash; House & Land</div>
+            <div class="features"><div class="feature"><span class="icon">&#8962;</span> 3 Bed, 2 Bath</div><div class="feature"><span class="icon">&#128663;</span> Double garage</div></div>
+            <div class="bottom-row"><div class="guarantees"><div class="guarantee">10-Year Guarantee</div><div class="guarantee">Master Builder</div></div><img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes"></div>
+          </div>
+        </div>
+        <div class="ad-format">1080 &times; 1350</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION 5: ANGLE 8 — PLANS ===== -->
+<div id="s5">
+  <div class="section-header"><div class="section-kicker">Feedback 4 + Angle 8</div><h2>Plans Collection &mdash; 6 Real Plans</h2></div>
+  <div class="feedback-panel">
+    <div class="fb-row"><span class="number">4</span><h3>Plans Collection</h3><span class="tag done">Done</span><span class="tag confirm">Confirm Specs</span></div>
+    <div class="feedback-quote">"Another good way to see them in one visual is the Pinterest board. Happy to give files for any other floor plans."<br><strong>&mdash; Ruth</strong></div>
+    <div class="changes">
+      <h4>What Changed</h4>
+      <ul>
+        <li>Replaced single placeholder with <strong>6 real plan cards</strong> using actual floor plan images</li>
+        <li>Arranged in 2 rows of 3, ordered by size (smallest to largest)</li>
+      </ul>
+      <table class="assets-table">
+        <tr><th>Plan</th><th>Size</th><th>Beds</th><th>Baths</th><th>Notes</th></tr>
+        <tr><td>Murihiku</td><td>159m&sup2;</td><td>3</td><td>2</td><td>Compact living</td></tr>
+        <tr><td>Pisa</td><td>189m&sup2;</td><td>3</td><td>2</td><td>Family home</td></tr>
+        <tr><td>St Clair</td><td>203m&sup2;</td><td>4</td><td>2</td><td>Modern family</td></tr>
+        <tr><td>Te Ranga</td><td>211m&sup2;</td><td>4</td><td>2</td><td>Spacious family</td></tr>
+        <tr><td>Bellgrove</td><td>257m&sup2;</td><td>4+</td><td>2+</td><td>Dual Income / Home & Income</td></tr>
+        <tr><td>Anderson</td><td>307m&sup2;</td><td>4</td><td>3</td><td>Grand family, premium</td></tr>
+      </table>
+      <h4>Please Confirm</h4>
+      <ul><li>Bed/bath counts are estimated &mdash; <strong>Ruth to confirm exact specs</strong></li></ul>
+    </div>
+  </div>
+  <div class="creative-area">
+    <div class="angle-label">Angle 8 &mdash; Plans Collection</div>
+    <div class="angle-title">"Start With a Plan. Make It Yours."</div>
+    <div class="angle-notes">Carousel format &mdash; each slide is a different plan. Also see: <a href="https://nz.pinterest.com/fowlerhomesnz/build-new-plans-collection-fowler-homes/" target="_blank">Pinterest board</a>.</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Card 1 &mdash; Murihiku</div><div class="ad-square c9"><div class="plan-visual" style="background: var(--white);"><img src="brandAssets/159m2_Murihiku/DS_Murihiku_Floor Plan_01.jpg" style="width: 90%; height: 90%; object-fit: contain;" alt="Murihiku"><div class="swipe-hint">&#8250;</div></div><div class="plan-info"><div class="plan-title">The Murihiku</div><div class="plan-subtitle">Compact living, smart layout</div><div class="specs"><div class="spec"><div class="spec-value">3</div><div class="spec-label">Bedrooms</div></div><div class="spec"><div class="spec-value">2</div><div class="spec-label">Bathrooms</div></div><div class="spec"><div class="spec-value">159</div><div class="spec-label">m&sup2; Floor</div></div></div><div class="cta-text">Browse all plans at fowlerhomes.co.nz</div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 2 &mdash; Pisa</div><div class="ad-square c9"><div class="plan-visual" style="background: var(--white);"><img src="brandAssets/189m2_Pisa/Fowler-Homes_Pisa- Floorplan_1024w.jpg" style="width: 90%; height: 90%; object-fit: contain;" alt="Pisa"><div class="swipe-hint">&#8250;</div></div><div class="plan-info"><div class="plan-title">The Pisa</div><div class="plan-subtitle">Family home, customisable to your section</div><div class="specs"><div class="spec"><div class="spec-value">3</div><div class="spec-label">Bedrooms</div></div><div class="spec"><div class="spec-value">2</div><div class="spec-label">Bathrooms</div></div><div class="spec"><div class="spec-value">189</div><div class="spec-label">m&sup2; Floor</div></div></div><div class="cta-text">Browse all plans at fowlerhomes.co.nz</div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 3 &mdash; St Clair</div><div class="ad-square c9"><div class="plan-visual" style="background: var(--white);"><img src="brandAssets/203m2_St Clair/stClair_floorplan.jpg" style="width: 90%; height: 90%; object-fit: contain;" alt="St Clair"><div class="swipe-hint">&#8250;</div></div><div class="plan-info"><div class="plan-title">The St Clair</div><div class="plan-subtitle">Modern family, open-plan living</div><div class="specs"><div class="spec"><div class="spec-value">4</div><div class="spec-label">Bedrooms</div></div><div class="spec"><div class="spec-value">2</div><div class="spec-label">Bathrooms</div></div><div class="spec"><div class="spec-value">203</div><div class="spec-label">m&sup2; Floor</div></div></div><div class="cta-text">Browse all plans at fowlerhomes.co.nz</div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+    </div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Card 4 &mdash; Te Ranga</div><div class="ad-square c9"><div class="plan-visual" style="background: var(--white);"><img src="brandAssets/211m2_Te Ranga/Te_Ranga_floorplan.jpg" style="width: 90%; height: 90%; object-fit: contain;" alt="Te Ranga"><div class="swipe-hint">&#8250;</div></div><div class="plan-info"><div class="plan-title">The Te Ranga</div><div class="plan-subtitle">Spacious family home</div><div class="specs"><div class="spec"><div class="spec-value">4</div><div class="spec-label">Bedrooms</div></div><div class="spec"><div class="spec-value">2</div><div class="spec-label">Bathrooms</div></div><div class="spec"><div class="spec-value">211</div><div class="spec-label">m&sup2; Floor</div></div></div><div class="cta-text">Browse all plans at fowlerhomes.co.nz</div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 5 &mdash; Bellgrove</div><div class="ad-square c9"><div class="plan-visual" style="background: var(--white);"><img src="brandAssets/257m2_Bellgrove/DS_Showhome 8 Homestead Drive_Floor Plan_01 (1).jpg" style="width: 90%; height: 90%; object-fit: contain;" alt="Bellgrove"><div class="swipe-hint">&#8250;</div></div><div class="plan-info"><div class="plan-title">The Bellgrove</div><div class="plan-subtitle">Dual income / Home & Income property</div><div class="specs"><div class="spec"><div class="spec-value">4+</div><div class="spec-label">Bedrooms</div></div><div class="spec"><div class="spec-value">2+</div><div class="spec-label">Bathrooms</div></div><div class="spec"><div class="spec-value">257</div><div class="spec-label">m&sup2; Floor</div></div></div><div class="cta-text">Browse all plans at fowlerhomes.co.nz</div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 6 &mdash; Anderson</div><div class="ad-square c9"><div class="plan-visual" style="background: var(--white);"><img src="brandAssets/307m2_Anderson/Anderson-Fowler-Homes-Floor Plan_1024.jpg" style="width: 90%; height: 90%; object-fit: contain;" alt="Anderson"><div class="swipe-hint">&#8250;</div></div><div class="plan-info"><div class="plan-title">The Anderson</div><div class="plan-subtitle">Grand family home, premium build</div><div class="specs"><div class="spec"><div class="spec-value">4</div><div class="spec-label">Bedrooms</div></div><div class="spec"><div class="spec-value">3</div><div class="spec-label">Bathrooms</div></div><div class="spec"><div class="spec-value">307</div><div class="spec-label">m&sup2; Floor</div></div></div><div class="cta-text">Browse all plans at fowlerhomes.co.nz</div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== UNCHANGED CONCEPTS ===== -->
+<div id="unchanged">
+  <div class="section-header"><div class="section-kicker">No Changes Required</div><h2>Unchanged Concepts</h2></div>
+  <div class="creative-area">
+    <div class="angle-notes" style="margin-top: 0;">Angles 3, 4, 5, 6, 9, and 10 were approved as-is. Shown for completeness.</div>
+
+    <div class="angle-label">Angle 3 &mdash; Social Proof</div><div class="angle-title">Testimonial Cards</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Feed &mdash; Portrait 4:5</div><div class="ad-portrait c3"><div class="image-placeholder" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/front-exterior-fowler-homes-waikato-show-home-image-51.jpg');"><div class="home-style"><span>Waikato &mdash; Custom Design & Build</span></div></div><div class="quote-section"><div class="quote-mark">"</div><div class="quote-text">Our home is everything that we had imagined and so much more. It's a huge privilege to call this beautiful house our family home.</div><div class="quote-attr">Wylie Family &mdash; Waikato</div><div class="logo-small"><img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1350</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Feed &mdash; Portrait 4:5</div><div class="ad-portrait c3"><div class="image-placeholder" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2020/01/home-exterior-arrotown-build-fowler-homes-queenstown-2200251706.jpg');"><div class="home-style"><span>Otago &mdash; Custom Design & Build</span></div></div><div class="quote-section"><div class="quote-mark">"</div><div class="quote-text">A fantastic job, making our build a pleasurable experience and providing us an on time, on budget home that we will truly enjoy for many years to come.</div><div class="quote-attr">Wood Family &mdash; Otago</div><div class="logo-small"><img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1350</div></div>
+    </div>
+
+    <div class="angle-label">Angle 4 &mdash; Process Demystification</div><div class="angle-title">"6 Steps to Your New Home"</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Feed &mdash; Square 1:1</div><div class="ad-square c4"><div class="top"><div class="kicker">Building Made Simple</div><div class="headline">6 steps from first<br>chat to move-in day.</div></div><div class="steps"><div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title">Initial Meeting</div><div class="step-desc">We chat about your section, budget, and wish list</div></div></div><div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title">Architectural Plans</div><div class="step-desc">Our designers draft your concept plans</div></div></div><div class="step"><div class="step-num">3</div><div class="step-content"><div class="step-title">Select Finishes</div><div class="step-desc">Choose fittings from our show rooms</div></div></div><div class="step"><div class="step-num">4</div><div class="step-content"><div class="step-title">Contract Signing</div><div class="step-desc">Fixed-price Master Build contract</div></div></div><div class="step"><div class="step-num">5</div><div class="step-content"><div class="step-title">Build Underway</div><div class="step-desc">Regular updates via construction software</div></div></div><div class="step"><div class="step-num">6</div><div class="step-content"><div class="step-title">Handover</div><div class="step-desc">Walk-through, keys, and 10-year guarantee</div></div></div></div><div class="bottom-row"><div class="tagline">Your Style of Living</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div><div class="ad-format">1080 &times; 1080</div></div>
+    </div>
+
+    <div class="angle-label">Angle 5 &mdash; Anti-Corporate / Personal</div><div class="angle-title">"You'll Work With the Owner"</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Feed &mdash; Portrait 4:5</div><div class="ad-portrait c5"><div class="photo-area" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/elementor/thumbs/joe-and-shelley-cattle-fowler-homes-waikato-award-winning-building-team-qqscxr1ugqxjarb8b7m35arlpczr6onopi03qai050.png');"><div class="red-bar"></div></div><div class="text-area"><div class="kicker">Fowler Homes Waikato</div><div class="headline">You won't deal with a call centre. You'll deal with us.</div><div class="body">At Fowler Homes, you work directly with the owners and their management team. Not a sales rep. Not a head office. The people who run the business, build your home.</div><div class="logo-small"><img src="brandAssets/FH_Horizontal/Horizontal_1.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1350</div></div>
+    </div>
+
+    <div class="angle-label">Angle 6 &mdash; Portfolio / Aspirational</div><div class="angle-title">"Custom Designed. Locally Built. Yours."</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Feed &mdash; Square 1:1</div><div class="ad-square c8" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/exterior-fowler-homes-auckland-south-33-1900wide.jpg');"><div class="gradient-overlay"></div><div class="content"><div class="tagline">Your Style of Living</div><div class="headline">Custom designed.<br>Locally built.<br>Yours.</div><div class="body">Every Fowler home starts with your ideas, your section, and your lifestyle. We bring it to life.</div><div class="cta-row"><div class="cta-button">View our homes</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+    </div>
+
+    <div class="angle-label">Angle 9 &mdash; Brand Heritage</div><div class="angle-title">"40 Years of Building for Kiwis"</div>
+    <div class="angle-notes">(Stacked reversed logo swapped in per Feedback 1.)</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Story / Reel &mdash; 9:16</div><div class="ad-story c10"><div class="logo-top"><img src="brandAssets/FH_Stacked/2. Fowler Homes Your Style of Living Stacked/a_Fowler_Homes_logo_reversed_2023.png" alt="Fowler Homes" style="height: 72px;"></div><div class="years-badge"><div class="num">40</div><div class="label">Years</div></div><div class="headline">Building homes<br>for Kiwis since<br>1984.</div><div class="stats-row"><div class="stat-item"><div class="val">13+</div><div class="lbl">Regions</div></div><div class="stat-item"><div class="val">100s</div><div class="lbl">Plans</div></div><div class="stat-item"><div class="val">1000s</div><div class="lbl">Homes Built</div></div></div><div class="tagline-bottom">Your Style of Living</div></div><div class="ad-format">1080 &times; 1920</div></div>
+    </div>
+
+    <div class="angle-label">Angle 10 &mdash; Interior Showcase Carousel</div><div class="angle-title">"This is a Fowler Home"</div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Card 1 &mdash; Kitchen</div><div class="ad-square c8" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/kitchen-island-fowler-homes-waikato-show-home-image-31.jpg');"><div class="gradient-overlay"></div><div class="content"><div class="tagline">This is a Fowler Home</div><div class="headline">Designed for<br>the way you<br>actually live.</div><div class="cta-row"><div class="cta-button">See more</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 2 &mdash; Living</div><div class="ad-square c8" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/06/jacks-point-queenstown-fowler-homes-living-fireplace-63-1.jpg');"><div class="gradient-overlay"></div><div class="content"><div class="tagline">This is a Fowler Home</div><div class="headline">Your space.<br>Your style.</div><div class="cta-row"><div class="cta-button">See more</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 3 &mdash; Outdoor</div><div class="ad-square c8" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/covered-outdoor-living-fowler-homes-auckland-south-29-scaled.jpg');"><div class="gradient-overlay"></div><div class="content"><div class="tagline">This is a Fowler Home</div><div class="headline">Indoor-outdoor<br>flow, done right.</div><div class="cta-row"><div class="cta-button">See more</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+    </div>
+    <div class="ad-row">
+      <div class="ad-wrapper"><div class="ad-label">Card 4 &mdash; Ensuite</div><div class="ad-square c8" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/master-ensuite-bathroom-fowler-homes-waikato-show-home-image-04.jpg');"><div class="gradient-overlay"></div><div class="content"><div class="tagline">This is a Fowler Home</div><div class="headline">Every detail.<br>Considered.</div><div class="cta-row"><div class="cta-button">See more</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+      <div class="ad-wrapper"><div class="ad-label">Card 5 &mdash; Exterior</div><div class="ad-square c8" style="background-image: url('https://cdn-dfmpo.nitrocdn.com/ixBywUObuLgVjQdXirAtdqGGBIOApjDR/assets/images/optimized/rev-061e82b/www.fowlerhomes.co.nz/wp-content/uploads/2024/07/exterior-fowler-homes-waikato-show-home-image-49.jpg');"><div class="gradient-overlay"></div><div class="content"><div class="tagline">Your Style of Living</div><div class="headline">Custom designed.<br>Locally built.<br>Yours.</div><div class="body">Book a free consultation with your local Fowler Homes team.</div><div class="cta-row"><div class="cta-button">Book now</div><img src="brandAssets/FH_Horizontal/Horizontal_1_Reversed.png" alt="Fowler Homes"></div></div></div><div class="ad-format">1080 &times; 1080</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LISTINGS ===== -->
+<div id="listings">
+  <div class="section-header"><div class="section-kicker">Reference</div><h2>Listings &mdash; Ready to Build Out</h2></div>
+  <div class="feedback-panel">
+    <p style="font-size: 14px; color: #555; margin-bottom: 16px;">Ruth provided the following listings with Google Drive assets. Each can become an Angle 7 carousel card once images are downloaded and prices confirmed.</p>
+    <table class="assets-table">
+      <tr><th>Address</th><th>Package Type</th><th>Region</th><th>Status</th></tr>
+      <tr><td>1 Centurion Court, Willow Pond</td><td>Turnkey House & Land</td><td>Queenstown</td><td><span class="tag pending">Ready</span></td></tr>
+      <tr><td>Lot 827 Dip Road, Hanley's Farm</td><td>Turnkey Home & Income</td><td>Queenstown</td><td><span class="tag done">In Concepts</span></td></tr>
+      <tr><td>Lots 915&ndash;920, Wooing Tree Estate</td><td>Turnkey Home & Income</td><td>Cromwell</td><td><span class="tag pending">Ready</span></td></tr>
+      <tr><td>Lot 214, Shotover Rise</td><td>Turnkey House & Land</td><td>Queenstown</td><td><span class="tag done">In Concepts</span></td></tr>
+      <tr><td>12a Hauhake Terrace, Kotare Park</td><td>Turnkey Home & Income</td><td>Cambridge</td><td><span class="tag pending">Ready</span></td></tr>
+      <tr><td>Queens Road, Glen Avon</td><td>House & Land</td><td>New Plymouth</td><td><span class="tag done">In Concepts</span></td></tr>
+      <tr><td>4 Ruru Place</td><td>House & Land</td><td>Feilding</td><td><span class="tag pending">Ready</span></td></tr>
+    </table>
+    <div class="next-steps" style="margin-top: 32px;">
+      <h2>Next Steps</h2>
+      <ol>
+        <li><strong>Ruth to confirm</strong> bed/bath specs on the 6 plans</li>
+        <li><strong>Ruth to confirm</strong> prices for the H&L / Turnkey cards from fowlerhomes.co.nz</li>
+        <li><strong>Ruth to send</strong> Design & Build icons for the D&B expert creative</li>
+        <li><strong>Download listing photos</strong> from Google Drive links to swap into Angle 7 cards</li>
+        <li><strong>Build out remaining H&L cards</strong> for Centurion Court, Wooing Tree, Cambridge, Feilding</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CHECKS ===== -->
+<div id="checks">
+  <div class="section-header"><div class="section-kicker">Quality Assurance</div><h2>Validation Checks</h2></div>
+  <div class="checks-container">
+    <div class="check-group">
+      <h3>Image Paths &mdash; All 24 Verified on Disk</h3>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>FH_Stacked/.../a_Fowler_Homes_logo_reversed_2023.png</code> &mdash; 4 placements</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>FH_Horizontal/Horizontal_1_Reversed.png</code> &mdash; 7 placements</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>FH_Horizontal/Horizontal_1.png</code> &mdash; 7 placements</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>159m2_Murihiku/DS_Murihiku_Floor Plan_01.jpg</code></div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>189m2_Pisa/Fowler-Homes_Pisa- Floorplan_1024w.jpg</code></div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>203m2_St Clair/stClair_floorplan.jpg</code></div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>211m2_Te Ranga/Te_Ranga_floorplan.jpg</code></div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>257m2_Bellgrove/DS_Showhome 8 Homestead Drive_Floor Plan_01 (1).jpg</code></div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div><code>307m2_Anderson/Anderson-Fowler-Homes-Floor Plan_1024.jpg</code></div></div>
+    </div>
+    <div class="check-group">
+      <h3>Content Accuracy</h3>
+      <div class="check-item"><div class="ci">&#10003;</div><div>Angle 1 &mdash; "Fixed Price" changed to "Packages"</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div>Angle 2 &mdash; "Love the Street" changed to "Design & Build Experts Since 1984"</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div>Angle 7 &mdash; 3 cards with distinct package-type badges</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div>Angle 8 &mdash; 6 real plan cards with actual floor plan images</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div>Stacked reversed logo deployed in 4 concepts</div></div>
+      <div class="check-item"><div class="ci">&#10003;</div><div>Angles 3, 4, 5, 6, 10 &mdash; unchanged from approved concepts</div></div>
+    </div>
+    <div class="check-group">
+      <h3>Outstanding Items</h3>
+      <div class="check-item" style="border-left: 3px solid #e65100; padding-left: 12px;"><div class="ci" style="background: #fff3e0; color: #e65100;">!</div><div>Bed/bath specs on plans &mdash; <strong>Ruth to confirm</strong></div></div>
+      <div class="check-item" style="border-left: 3px solid #e65100; padding-left: 12px;"><div class="ci" style="background: #fff3e0; color: #e65100;">!</div><div>H&L / Turnkey prices are placeholders &mdash; <strong>Ruth to confirm</strong></div></div>
+      <div class="check-item" style="border-left: 3px solid #1565c0; padding-left: 12px;"><div class="ci" style="background: #e3f2fd; color: #1565c0;">&#8230;</div><div>Design & Build icons pending from Ruth</div></div>
+      <div class="check-item" style="border-left: 3px solid #1565c0; padding-left: 12px;"><div class="ci" style="background: #e3f2fd; color: #1565c0;">&#8230;</div><div>Google Drive listing photos to be downloaded for Angle 7</div></div>
+    </div>
+    <div class="check-summary">
+      <h3>All Checks Passed</h3>
+      <p>24 image paths verified. HTML valid. All 5 feedback items actioned across 10 angles. 4 items flagged for Ruth's confirmation before final production.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Fowler Homes &bull; Meta Ads Campaign &bull; Complete Review &bull; February 2026</div>
+
+</body>
+</html>

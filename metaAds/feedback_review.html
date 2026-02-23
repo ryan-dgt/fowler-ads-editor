@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fowler Homes — Creative Feedback Review</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --red: #da291c;
+    --red-light: #fdf2f1;
+    --green: #1a8a4a;
+    --green-light: #eef8f2;
+    --amber: #c77d0a;
+    --amber-light: #fef8ed;
+    --grey: #7c7b7a;
+    --grey-light: #f5f5f5;
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --border: #e5e5e5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--grey-light);
+    color: var(--black);
+    padding: 48px 24px;
+    line-height: 1.6;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 3px solid var(--red);
+  }
+
+  .page-header .kicker {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+
+  .page-header .date {
+    font-size: 13px;
+    color: var(--grey);
+  }
+
+  /* Feedback Section */
+  .feedback-section {
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .section-header {
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header .left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-header .num {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    background: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .section-header h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.3;
+  }
+
+  .section-header .angle {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey);
+    letter-spacing: 0.5px;
+  }
+
+  /* Status badges */
+  .status {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .status.done {
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  .status.partial {
+    background: var(--amber-light);
+    color: var(--amber);
+  }
+
+  .status.waiting {
+    background: var(--grey-light);
+    color: var(--grey);
+    border: 1px solid var(--border);
+  }
+
+  .status.action {
+    background: var(--red-light);
+    color: var(--red);
+  }
+
+  /* Section body */
+  .section-body {
+    padding: 24px 32px;
+  }
+
+  /* Feedback quote */
+  .client-quote {
+    background: var(--grey-light);
+    border-left: 3px solid var(--red);
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .client-quote .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .client-quote p {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* Response text */
+  .response h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+
+  .response p {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 12px;
+  }
+
+  .response ul {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+
+  .response ul li {
+    font-size: 13px;
+    color: #444;
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .response ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .response ul.missing li::before {
+    content: '—';
+    color: var(--amber);
+  }
+
+  .response ul.neutral li::before {
+    content: '•';
+    color: var(--grey);
+  }
+
+  .callout {
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .callout.info {
+    background: #f0f4ff;
+    color: #2c5282;
+    border: 1px solid #d0daf5;
+  }
+
+  .callout.warning {
+    background: var(--amber-light);
+    color: var(--amber);
+    border: 1px solid #f0ddb8;
+  }
+
+  .callout.success {
+    background: var(--green-light);
+    color: var(--green);
+    border: 1px solid #c0e5d0;
+  }
+
+  .callout strong {
+    font-weight: 600;
+  }
+
+  /* Tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--grey-light);
+    font-weight: 600;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--grey);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: #444;
+    vertical-align: top;
+  }
+
+  .data-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .tick { color: var(--green); font-weight: 700; }
+  .cross { color: var(--red); font-weight: 600; }
+  .dash { color: var(--amber); }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .tag.turnkey {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .tag.hl {
+    background: var(--red);
+    color: var(--white);
+  }
+
+  /* Summary */
+  .summary-section {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  .summary-header {
+    padding: 24px 32px;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .summary-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .summary-body {
+    padding: 0;
+  }
+
+  .action-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .action-row:last-child {
+    border-bottom: none;
+  }
+
+  .action-row .priority {
+    min-width: 72px;
+    padding: 4px 0;
+    text-align: center;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .action-row .priority.high {
+    background: var(--red-light);
+    color: var(--red);
+  }
+
+  .action-row .priority.medium {
+    background: var(--amber-light);
+    color: var(--amber);
+  }
+
+  .action-row .priority.low {
+    background: var(--grey-light);
+    color: var(--grey);
+  }
+
+  .action-row .desc {
+    font-size: 14px;
+    color: #444;
+    flex: 1;
+  }
+
+  .action-row .owner {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--grey);
+    white-space: nowrap;
+  }
+
+  /* Footer */
+  .page-footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--grey);
+    letter-spacing: 1px;
+  }
+
+  @media print {
+    body { background: white !important; padding: 20px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .feedback-section, .summary-section { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <div class="kicker">Meta Ad Creatives</div>
+    <h1>Fowler Homes — Client Feedback Review</h1>
+    <div class="date">Ruth's feedback reviewed 20 Feb 2026</div>
+  </div>
+
+  <!-- ============================
+       1. REVERSED STACKED LOGO
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">1</div>
+        <div>
+          <h2>Reversed Stacked Logo</h2>
+          <div class="angle">Applies to all angles</div>
+        </div>
+      </div>
+      <div class="status partial">Partial</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>Wouldn't mind seeing the 'reversed' stacked logo used in some concepts.</p>
+      </div>
+
+      <div class="response">
+        <h3>Current Usage</h3>
+        <p>The reversed stacked logo (<code>a_Fowler_Homes_logo_reversed_2023.png</code>) currently appears in 4 concepts:</p>
+        <ul>
+          <li>Angle 1 — Package Value (square + story)</li>
+          <li>Angle 2 — Design & Build (portrait format only)</li>
+          <li>Angle 9 — Brand Heritage (story)</li>
+        </ul>
+
+        <h3>Not Yet Using It</h3>
+        <p>These dark-background creatives still use the horizontal reversed logo and are ideal candidates for the stacked version:</p>
+        <ul class="missing">
+          <li>Angle 2 square format (uses horizontal reversed)</li>
+          <li>Angle 4 — 6 Steps process (black background)</li>
+          <li>Angle 6 — Portfolio hero (dark gradient)</li>
+          <li>Angle 10 — Interior carousel (dark gradient, all 5 cards)</li>
+        </ul>
+
+        <div class="callout info">
+          <strong>Recommendation:</strong> Swap the horizontal logo for the reversed stacked on at least 2-3 more dark-background creatives to give it broader visibility across the set.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       2. FIXED PRICE → PACKAGES
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">2</div>
+        <div>
+          <h2>Fixed Price Reframed as Packages</h2>
+          <div class="angle">Angle 1 — Package Value</div>
+        </div>
+      </div>
+      <div class="status done">Addressed</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>With the Fixed Price creative, is there a way to mould this message into our Packages for sale? As this is the real value for buyers/investors. Design & Build clients will make variations and go over budget...</p>
+      </div>
+
+      <div class="response">
+        <h3>What Changed</h3>
+        <p>Angle 1 has been fully repositioned away from generic "fixed price" and now centres on packages:</p>
+        <ul>
+          <li>Headline: <strong>"Your Package. Your Price. Sorted."</strong></li>
+          <li>Stat line: "House & Land / Turnkey Packages"</li>
+          <li>Copy: "Land, home, fittings — everything included in one fixed price. No variations. No surprises. Just your keys."</li>
+          <li>Story variant calls out "Turnkey & House & Land Packages" explicitly</li>
+          <li>Section notes acknowledge D&B clients make variations; packages are locked in</li>
+        </ul>
+
+        <div class="callout success">
+          The fixed-price message now lands specifically on packages — where FH can genuinely deliver it — not on custom Design & Build work.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       3. DESIGN & BUILD EXPERTS
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">3</div>
+        <div>
+          <h2>Design & Build Experts Messaging</h2>
+          <div class="angle">Angle 2 — Design & Build Expertise</div>
+        </div>
+      </div>
+      <div class="status done">Addressed</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>I like this, but it's not a massive proposition statement for us, I'd probably like to roll out more 'Design & Build experts' message. This is the foundation of FH, it also ties to the knock down & rebuild. Attached is my draft e-doc. I'll get the icons for you.</p>
+      </div>
+
+      <div class="response">
+        <h3>Current Concepts</h3>
+        <ul>
+          <li>Kicker: <strong>"Design & Build Experts"</strong> / "Custom Design & Build"</li>
+          <li>Square headline: "Your vision. Built by experts."</li>
+          <li>Portrait headline: "We don't just build homes. We design them <em>with you.</em>"</li>
+          <li>Copy references Plans Collection and Knock Down & Rebuild</li>
+          <li>Bottom bar: "Design & Build Since 1984" / "Knock Down & Rebuild Available"</li>
+          <li>Section notes position D&B as the foundation of the business</li>
+        </ul>
+
+        <div class="callout info">
+          <strong>Waiting on Ruth:</strong> She's providing a draft e-doc and icons that could enhance this angle further. Once received, these can be integrated into the creative.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       4. PLANS COLLECTION
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">4</div>
+        <div>
+          <h2>Plans Collection Carousel</h2>
+          <div class="angle">Angle 8 — Plans Collection</div>
+        </div>
+      </div>
+      <div class="status done">Addressed</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>Another good way to see them in one visual is the Pinterest board. Happy to give files for any other floor plans.</p>
+      </div>
+
+      <div class="response">
+        <h3>All 6 Plans Included</h3>
+        <p>Every plan Ruth provided assets for has a carousel card with a local floor plan image:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Card</th>
+              <th>Plan</th>
+              <th>Size</th>
+              <th>Specs</th>
+              <th>Floor Plan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Murihiku</td>
+              <td>159 m²</td>
+              <td>3 bed, 2 bath</td>
+              <td><span class="tick">✓</span> Local file</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Pisa</td>
+              <td>189 m²</td>
+              <td>3 bed, 2 bath</td>
+              <td><span class="tick">✓</span> Local file</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>St Clair</td>
+              <td>203 m²</td>
+              <td>4 bed, 2 bath</td>
+              <td><span class="tick">✓</span> Local file</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Te Ranga</td>
+              <td>211 m²</td>
+              <td>4 bed, 2 bath</td>
+              <td><span class="tick">✓</span> Local file</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Bellgrove</td>
+              <td>257 m²</td>
+              <td>4+ bed, 2+ bath</td>
+              <td><span class="tick">✓</span> Local file</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>Anderson</td>
+              <td>307 m²</td>
+              <td>4 bed, 3 bath</td>
+              <td><span class="tick">✓</span> Local file</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <ul>
+          <li>Bellgrove correctly labelled as "Dual income / Home & Income property"</li>
+          <li>Pinterest board linked in section notes</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       5. HOUSE & LAND — LABELLING
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">5</div>
+        <div>
+          <h2>H&L Labelling: Turnkey vs House & Land</h2>
+          <div class="angle">Angle 7 — Direct Response</div>
+        </div>
+      </div>
+      <div class="status done">Addressed</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>Needs to have clear labelling if a Turnkey or House & Land Package (they are different things).</p>
+      </div>
+
+      <div class="response">
+        <h3>Labelling System</h3>
+        <p>Every Angle 7 card now has three layers of clear differentiation:</p>
+        <ul>
+          <li><strong>Badge (top-right corner):</strong> <span class="tag turnkey">Turnkey House & Land</span> or <span class="tag hl">House & Land Package</span></li>
+          <li><strong>Price tag prefix:</strong> "Turnkey From" vs "House & Land From"</li>
+          <li><strong>Payment badge:</strong> "10% Deposit" (Turnkey) vs "Progress Payments" (H&L)</li>
+        </ul>
+        <p>Section notes explain the distinction between the two package types for anyone building additional cards.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       6. H&L PROPERTY COVERAGE
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">6</div>
+        <div>
+          <h2>H&L Property Coverage</h2>
+          <div class="angle">Angle 7 — Direct Response</div>
+        </div>
+      </div>
+      <div class="status partial">Partial</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>Ruth provided Google Drive asset folders and website links for 7 specific properties.</p>
+      </div>
+
+      <div class="response">
+        <h3>Coverage Check</h3>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>In Ads?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Shotover Rise Lot 214, Queenstown</td>
+              <td><span class="tag turnkey">Turnkey H&L</span></td>
+              <td><span class="tick">✓</span> Card 1</td>
+            </tr>
+            <tr>
+              <td>Lot 827 Hanley's Farm, Queenstown</td>
+              <td><span class="tag turnkey">Turnkey Home & Income</span></td>
+              <td><span class="tick">✓</span> Card 2</td>
+            </tr>
+            <tr>
+              <td>Queens Road, Glen Avon, New Plymouth</td>
+              <td><span class="tag hl">House & Land</span></td>
+              <td><span class="tick">✓</span> Card 3</td>
+            </tr>
+            <tr>
+              <td>1 Centurion Court, Willow Pond, Queenstown</td>
+              <td><span class="tag turnkey">Turnkey H&L</span></td>
+              <td><span class="cross">Not yet</span></td>
+            </tr>
+            <tr>
+              <td>Vintage Rise, Wooing Tree Estate, Lots 915-920</td>
+              <td><span class="tag turnkey">Turnkey Home & Income</span></td>
+              <td><span class="cross">Not yet</span></td>
+            </tr>
+            <tr>
+              <td>12a Hauhake Terrace, Kotare Park, Cambridge</td>
+              <td><span class="tag turnkey">Turnkey Home & Income</span></td>
+              <td><span class="cross">Not yet</span></td>
+            </tr>
+            <tr>
+              <td>4 Ruru Place, Feilding</td>
+              <td><span class="tag hl">House & Land</span></td>
+              <td><span class="cross">Not yet</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout warning">
+          <strong>3 of 7 properties have ad cards.</strong> The remaining 4 all have Google Drive asset folders ready. Decision needed: build cards for all 7, or treat the current 3 as templates and extend as needed per campaign?
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       7. PRICES
+       ============================ -->
+  <div class="feedback-section">
+    <div class="section-header">
+      <div class="left">
+        <div class="num">7</div>
+        <div>
+          <h2>Price Accuracy</h2>
+          <div class="angle">Angle 7 — Direct Response</div>
+        </div>
+      </div>
+      <div class="status action">Needs Check</div>
+    </div>
+    <div class="section-body">
+
+      <div class="client-quote">
+        <div class="label">Ruth's Feedback</div>
+        <p>Website has all the accurate info & prices.</p>
+      </div>
+
+      <div class="response">
+        <h3>Prices Shown in Ads</h3>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Card</th>
+              <th>Property</th>
+              <th>Price Shown</th>
+              <th>Verified?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Shotover Rise Lot 214</td>
+              <td>$895,000</td>
+              <td><span class="cross">Unverified</span></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Hanley's Farm Lot 827</td>
+              <td>$1,095,000</td>
+              <td><span class="cross">Unverified</span></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Queens Road, New Plymouth</td>
+              <td>$685,000</td>
+              <td><span class="cross">Unverified</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="callout warning">
+          <strong>Manual check required.</strong> The fowlerhomes.co.nz listing pages load prices via JavaScript, so they couldn't be scraped for verification. All three prices need to be confirmed against the live site before going to production.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================
+       SUMMARY / ACTIONS
+       ============================ -->
+  <div class="summary-section">
+    <div class="summary-header">
+      <h2>Actions Required</h2>
+    </div>
+    <div class="summary-body">
+
+      <div class="action-row">
+        <div class="priority high">High</div>
+        <div class="desc">Verify all 3 H&L card prices against live fowlerhomes.co.nz listings</div>
+        <div class="owner">Manual check</div>
+      </div>
+
+      <div class="action-row">
+        <div class="priority medium">Medium</div>
+        <div class="desc">Swap horizontal logo to reversed stacked on dark-background creatives (Angles 4, 6, 10)</div>
+        <div class="owner">Ready to build</div>
+      </div>
+
+      <div class="action-row">
+        <div class="priority medium">Medium</div>
+        <div class="desc">Build ad cards for the 4 remaining H&L properties (assets in Google Drive)</div>
+        <div class="owner">Pending decision</div>
+      </div>
+
+      <div class="action-row">
+        <div class="priority low">Waiting</div>
+        <div class="desc">Integrate Ruth's e-doc content and icons into Angle 2 (Design & Build)</div>
+        <div class="owner">Waiting on Ruth</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="page-footer">
+    Fowler Homes — Meta Ad Creatives — Feedback Review
+  </div>
+
+</div>
+
+</body>
+</html>
